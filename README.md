@@ -265,6 +265,166 @@
 
             - ECMAScript 6 constitue ainsi une mise à jour considérable de JavaScript, et un évènement dans son histoire.  
 
-    - ***Essentiel***  
+##  
+## ***__Syntaxe et intégration de JS__***  
 
-        - 
+- ### ***Syntaxe de JavaScript et 2 méthodes possibles d’intégration en HTML***  
+
+    - #### ***Syntaxe de JavaScript et 2 méthodes possibles d’intégration en HTML***  
+
+        - ***Syntaxe générale de JavaScript***  
+
+            - Voici une liste non exhaustive de règles de syntaxe en JavaScript :  
+
+                - La hiérarchie des instructions est représentée via le système d’indentation (tab)  
+
+                - Chaque ligne d’instructions se termine par un ***« ; »***  
+
+                - Les paramètres d’une fonction sont inscrits entre parenthèses et séparés par des virgules : ***(paramètre 1, paramètre 2)***  
+
+                - Le corps d’une fonction est inscrit entre accolades : ***{corps d’une fonction}***  
+
+                - Les commentaires sont précédés des caractères : ***« // »***  
+
+        - ***Intégration d’un script directement dans un document HTML (intégration interne)***  
+
+            - La première méthode que nous pouvons utiliser pour intégrer un script JavaScript est de l’écrire directement dans notre document HTML (intégration interne). Pour cela, nous allons utiliser la balise ***`<script>`***.  
+
+                - Exemple :  
+
+                    ```HTML
+                    <!DOCTYPE html>
+                    <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Document</title>
+                        </head>
+
+                        <body>
+                        
+                            <header>
+                                <h1>Blog</h1>
+                            </header>
+                            
+                            <section>
+                                <article>
+                                    <p>Voici</p>
+                                </article>
+                                
+                                <article>
+                                    <p>“Votre texte”</p>
+                                </article>
+                            </section>
+                            
+                            <footer></footer>
+
+                            <script>
+                                //script JavaScript
+                                alert("Hello World !");
+                            </script>
+
+                        </body>
+                    </html>
+                    ```
+
+        - ***Intégration d’un script via un lien dans un document HTML (intégration externe)***  
+
+            - Il faut simplement utiliser la balise ***`<script>`*** et définir l’attribut ***src*** sur l’adresse du fichier ***.js***. On va donc, dans notre exemple, créer un dossier ***« scripts »*** dans lequel on va créer un fichier ***« script.js »***. Puis dans le fichier ***script.js***, on insère l’instruction :  
+
+                ```JS
+                alert("Hello World !");
+                ``````
+
+            - On peut modifier le fichier .html pour qu’il intègre le script :  
+
+                ```HTML
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Document</title>
+                    </head>
+
+                    <body>
+                    
+                        <header>
+                            <h1>Blog</h1>
+                        </header>
+                        
+                        <section>
+                            <article>
+                                <p>Voici</p>
+                            </article>
+                            
+                            <article>
+                                <p>“Votre texte”</p>
+                            </article>
+                        </section>
+                        
+                        <footer></footer>
+
+                        <script src="scripts/script.js"></script>
+
+                    </body>
+                </html>               
+                ```
+
+        - ***Syntaxe des chemins relatifs***  
+
+            - Dans notre exemple, nous avons utilisé l’attribut src en spécifiant un chemin relatif.  
+            
+            - Si le document HTML se trouve dans un sous dossier, il faudra sortir du sous-dossier pour se placer dans le dossier parent, pour ensuite se déplacer dans le sous-dossier « scripts ».  
+            
+            - Pour sortir du dossier et donc se placer dans le dossier parent, il faut commencer le chemin par : « ../ ». Cette inscription permet de se déplacer dans le dossier parent.  
+
+- ### ***Appliquer la convention et éviter une erreur courante***  
+
+    - #### ***Appliquer la convention et éviter une erreur courante***  
+
+        - d’un point de vue conventionnel, il est conseillé d’insérer les scripts (avec l’attribut src) dans la balise ***\<head>***.  
+
+            - Exemple ci-dessous :  
+
+                ```HTML
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <link rel="stylesheet" href="styles/style.css">  
+                        <script src="scripts/script.js"></script> <!-- Insertion du script.js -->
+                        <title>Document</title>
+                    </head>
+                    <body>
+                        <header>
+                            <h1>Blog</h1>
+                        </header>
+                        <section>
+                            <article>
+                                <p>“Votre texte”</p>
+                            </article>
+                            <article>
+                                <p>“Votre texte”</p>
+                            </article>
+                        </section>
+                        <footer></footer>
+                    </body>
+                </html>
+                ```
+
+        - ***Ordre des métadonnées***  
+
+            - Il est préférable, voire indispensable, de placer dans le head les liens vers les feuilles de style avant les scripts, pour afficher correctement et rapidement le visuel du site.  
+
+            - L’attribut ***defer*** de la balise ***`<script>`*** permet d’indiquer que le script doit être exécuté de manière différée, donc une fois que le document est analysé.  
+            
+            - Cet attribut doit être utilisé uniquement dans le cas où un attribut ***src*** est spécifié.  
+
+                ```HTML
+                <script src="scripts/script.js" defer></script> <!-- Ajouter "defer" à la suite du fichier script.js -->
+                ```
