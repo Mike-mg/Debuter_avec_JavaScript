@@ -703,3 +703,308 @@
 
         - Pour les variables qui changent de valeur tout au long du programme, il est recommandé d'utiliser ***'let'***.  
 
+##  
+## ***__Les opérateurs__***  
+
+- ### ***Opérateurs arithmétiques et d’affectation***  
+
+  - #### ***Introduction***  
+
+    - Nous nous intéresserons à des exemples numériques, puis nous verrons quels opérateurs peuvent nous être utiles lorsqu’on manipule des chaînes de caractères.   
+
+  - #### ***Opérateurs arithmétiques***  
+
+    - Les opérateurs arithmétiques vont nous permettre de réaliser des opérations mathématiques simples. Nous utiliserons la commande console.log afin d’afficher dans la console les résultats des opérations mathématiques réalisées.  
+
+    - ***L’opérateur « + »***  
+
+        - L’opérateur + permet simplement d’additionner 2 valeurs.  
+
+            ```JS
+            let a = 2;
+            let b = 567.42;
+            console.log(a + b);
+            ```  
+            - Dans ce cas, console.log(a + b) affichera dans la console : 569,42.  
+            
+    - ***L’opérateur « - »***  
+
+        - L’opérateur - permet simplement de soustraire une valeur à une autre.  
+
+            ```JS
+            let a = 567.42;
+            console.log(a - 25);
+            ```
+            - Dans ce cas, console.log(a - 25) affichera dans la console : 542,42.  
+
+    - ***L’opérateur « * »***  
+
+        - L’opérateur * permet d’obtenir le produit de 2 nombres (multiplication).  
+
+            ```JS
+            let a = 2 * 4.5;
+            console.log(a);
+            ```
+            - Dans ce cas, console.log(a) affichera dans la console : 9.  
+
+    - ***L’opérateur « / »***  
+
+        - L’opérateur / permet de diviser un nombre par un autre nombre :  
+
+            ```JS
+            console.log(58 / 2);
+            ```
+            - Dans ce cas, console.log(58/2) affichera dans la console : 29.  
+
+    - ***L’opérateur « % »***  
+
+        - L’opérateur % (qu’on appelle en général « modulo ») permet d’obtenir le reste d’une division euclidienne :  
+
+            ```JS
+            let a = 90;
+            let b = 11;
+            console.log(a % b);
+            ```
+            - Dans ce cas, console.log(a % b) affichera dans la console : 2.  
+
+            - Pour bien comprendre, si on fait une division euclidienne avec 90 comme dividende et 11 comme diviseur, on obtient :  
+
+                - 90 = 11 x 8 + 2  
+                
+                - On a donc un quotient égal à 8 et un reste égal à 2.  
+
+    - ***L’opérateur « ** » ***  
+
+        - L’opérateur ** permet d’élever un nombre à une puissance. Par exemple, si on veut obtenir l’écriture décimale de 18**4, on fera :  
+
+            ```JS
+            console.log(18 ** 4);
+            ```
+            - Dans ce cas, console.log(18 ** 4) affichera dans la console : 104 976.  
+
+            - 18**4 = 18 x 18 x 18 x18 = 104 976  
+
+    - ***L’opérateur « ++ » et « -- »***  
+
+        - L’opérateur ++ qu’on appelle « opérateur d’incrémentation » permet d’ajouter l’entier 1 à une valeur (on dit qu’il incrémente une variable).  
+
+            ```JS
+            let a = 2;
+            a ++;
+            console.log(a);
+            ```
+            - Dans ce cas, console.log(a) affichera dans la console : 3.  
+
+            - En effet, l’incrémentation de a revient à écrire :  
+
+                ```JS
+                let a = 0
+                a = a + 1;
+                ```
+                - L’opérateur -- est quant à lui appelé « opérateur de décrémentation ». Il fonctionne exactement comme l’opérateur d’incrémentation, mais permet en revanche de retirer 1 à une valeur :  
+
+                    ```JS
+                    let a = 3;
+                    a --;
+                    console.log(a);
+                    ```
+                    - Dans ce cas, console.log(a) affichera dans la console : 2.  
+
+  - #### ***Opérateurs d’affectation***  
+
+    - ***L’opérateur « = »***  
+
+        - L’opérateur = est dit « opérateur d’assignement simple ». Il est utilisé pour définir la valeur d’une variable. Voici un exemple simple :  
+
+            ```JS
+            let a = 2;
+            console.log(a);
+            ```
+            - Ici, on assigne l’entier 2 à la variable a, avec l’opérateur d’assignement =. La ligne console.log(a) affichera donc dans la console : 2.  
+
+    - ***Les opérateurs « += », « -= », « *= » et « /= »***  
+
+        - L’opérateur += peut être appelé « opérateur d’affectation après addition ». Il va permettre d’affecter à une variable sa propre valeur à laquelle on ajoute celle d’une seconde valeur :  
+
+            ```JS
+            let a = 2;
+            a += 8;
+            console.log(a);
+            ```
+            - Ici, console.log(a) affiche 10 dans la console. C’est comme si on avait fait :  
+
+                ```JS
+                let a = 0
+                a = a + 8;
+                ```
+
+        - L’opérateur d’affectation après soustraction -= fonctionne exactement de la même manière, mais renvoie la différence du premier nombre par le second :  
+
+            ```JS
+            let a = 18;
+            a -= 4;
+            console.log(a);
+            ```
+            - Ici, a sera égal à lui-même moins 4, donc à 18 - 4, c’est-à-dire 14.  
+
+        - Les opérateurs d’affectation après multiplication (*=) et après division (/=) fonctionnent de la même manière, mais permettent respectivement d’affecter à une variable la valeur de la multiplication d’elle-même par un autre nombre et la valeur de la division d’elle-même par un autre nombre.  
+
+        - On comprend que les opérateurs vont nous permettre de modifier les valeurs des nombres. Mais ils vont aussi nous permettre de modifier d’autres types de données, comme les chaînes de caractères.  
+
+        - Les autres opérateurs d’affectation sont listés à l’adresse : [developer.mozilla.org](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_and_Operators#op%C3%A9rateurs_daffectation)
+
+  - #### ***Opérateurs à utiliser pour les chaînes de caractères***  
+
+    - Les chaînes de caractères permettent de représenter des textes.  
+    
+    - Ce sont, comme leur nom l’indique, des ensembles de caractères, assemblés les uns à la suite des autres.  
+    
+    - 2 opérateurs vont être très utiles pour modifier des chaînes de caractères : l’opérateur de concaténation et l’opérateur d’affectation après concaténation.  
+
+    - ***L’opérateur de concaténation « + »***  
+
+        - Le symbole + n’est pas utilisé uniquement pour additionner des nombres.  
+
+        - Il peut servir à la fois d’opérateur d’addition (pour les nombres), mais aussi d’opérateur de concaténation (pour les chaînes de caractères). La concaténation, c’est le fait d’assembler plusieurs chaînes de caractères en une seule. Prenons un exemple simple :  
+
+            ```JS
+            let nom = "Parker";
+            let prenom = "Peter";
+            let nomComplet = prenom + " " + nom;
+            console.log(nomComplet);
+            ```
+            - Ici, nous avons concaténé 3 chaînes de caractères dans la variable nomComplet : la chaîne "Peter" contenue dans la variable prenom, la chaîne " " (qui contient un espace) et enfin la chaîne "Parker" contenue dans la variable nom. La variable nomComplet contient donc la chaîne "Peter Parker".  
+
+    - ***L’opérateur d’affectation après concaténation « += »***  
+
+        - Le symbole += peut aussi être utilisé pour concaténer des chaînes. Quand il est utilisé avec des chaînes, il ne sert pas d’opérateur d’affectation après addition mais on peut dire « d’opérateur d’affectation après concaténation ». Prenons un exemple tout simple :  
+
+            ```JS
+            let nom = "Peter";
+            nom += " Parker";
+            console.log(nom);
+            ```
+            - La chaîne de caractères qui est placée après l’opérateur est ajoutée à la fin de la chaîne. Donc la variable nom contiendra la chaîne "Peter Parker".  
+
+- ### ***Opérateurs de comparaison et opérateurs logiques***  
+
+  - #### ***Opérateurs de comparaison***  
+
+    - ***Les opérateurs « == » et « != »***  
+
+        - ’opérateur d’égalité == vérifie si 2 valeurs sont égales ou non. Si elles le sont, l’expression renverra true, sinon false :  
+
+            ```JS
+            let a = "Ordinateur";
+            let b = "Telephone";
+            let c = "Ordinateur";
+            console.log(a == b);
+            console.log (a == c);
+            ```
+            - On peut voir que console.log(a == b) affiche false car les 2 chaînes ne sont pas égales tandis que console.log (a == c) affiche true car les deux chaînes sont égales.  
+
+        - L’opérateur d’inégalité != vérifie quant à lui si 2 valeurs ne sont pas égales :  
+
+            ```JS
+            let a = 17.2;
+            let b = 17.5;
+            let c = 17.2;
+            console.log(a != b);
+            console.log (a != c);
+            ```
+            - Dans ce cas, console.log(a != b) affiche dans la console true puisque a et b ne sont pas égaux. Cependant, console.log (a != c) affiche false car a et c sont égaux.  
+
+    - ***Les opérateurs « === » et « !== »***  
+
+        - Les opérateurs === (d’égalité stricte) et !== (d’inégalité stricte) vérifient respectivement si une valeur est égale ou inégale à une autre, mais prennent aussi en compte le type de la valeur (entier, booléen, chaîne de caractères, etc.).  
+        
+        - L’opérateur === vérifie si une valeur est égale à une autre et si leur type sont les mêmes. Dans ce cas, il renvoie true. L’opérateur !== renvoie true dans le cas où il y a au moins une différence de type ou de valeur entre les 2 valeurs.  
+
+            ```JS
+            let a = 1;
+            let b = "1";
+            console.log(a == b); //egalite : true
+            console.log(a === b); //egalite stricte : false
+            console.log(a != b); //inegalite : false
+            console.log (a !== b); ////inegalite stricte : true
+            ```
+
+    - ***Les opérateurs « < », « > », « <= » et « >= »***  
+
+        - Pour bien comprendre, listons et expliquons chacun de ces opérateurs :  
+
+            - ***<*** : stricte infériorité. Vérifie si une valeur est strictement inférieure à une autre  
+
+            - ***>*** : stricte supériorité. Vérifie si une valeur est strictement supérieure à une autre  
+
+            - ***<=*** : infériorité. Vérifie si une valeur est inférieure ou égale à une autre  
+
+            - ***>=*** : supériorité. Vérifie si une valeur est supérieure ou égale à une autre
+
+                - Prenons un exemple simple :  
+
+                    ```JS
+                    let a = 17.2;
+                    let b = 17.5;
+                    let c = 17.2;
+                    console.log(a < b); //true
+                    console.log (a <= c); //true
+                    console.log (a > b); //false
+                    console.log (a >= c); //true
+                    ```
+                    - Pour chaque ligne console.log, un commentaire spécifie dans le code le booléen affiché. On voit que c’est cohérent.
+
+  - #### ***Opérateurs logiques***  
+
+    - ***L’opérateur « && »***  
+
+        - L’opérateur && signifie littéralement « et ».  
+        
+        - Dans le cas où on utilise un && au milieu de deux expressions renvoyant un booléen, l’opérateur renverra true si les deux expressions renvoient true, sinon, il renverra false.  
+        
+        - Donc, quand on utilise l’opérateur &&, on vérifie si deux expressions sont « vraies ». Si une seule l’est, alors, l’opérateur renverra false. Voyons un exemple concret :  
+
+            ```JS
+            let a = 17.5;
+            let b = 17.5;
+            let c = 17.2;
+            console.log(a > c && a < b); //false
+            console.log(a == b && a > c); //true
+            ```
+            - L’instruction console.log(a > c && a < b) affiche dans la console false car les deux expressions ne sont pas vraies. Même si l’expression a > c est vérifiée, l’expression a < b est fausse.  
+
+            - En revanche, l’instruction console.log(a == b && a > c) affiche true car les expressions a == b et a > c sont toutes les deux vraies.
+
+    - ***L’opérateur « || »***  
+
+        - L’opérateur || signifie littéralement « ou ». Dans le cas où on utilise un || au milieu de deux expressions renvoyant un booléen, l’opérateur renverra true si au moins une des deux expressions est juste, sinon, il renverra false :  
+
+            ```JS
+            let a = 17.5;
+            let b = 17.5;
+            let c = 17.2;
+            console.log(a == b || a < c); //true
+            console.log(a < c || a == c); //false
+            ```
+            - L’instruction console.log(a == b || a > c) affiche dans la console true car une des deux expressions renvoie true (l’expression a == b est vérifiée). Si les deux expressions étaient vraies, l’instruction aurait aussi affiché true.  
+
+            - En revanche, l’instruction console.log(a < c || a == c) affiche false car aucune des deux expressions n’est vraie.  
+
+    - ***L’opérateur « ! »***  
+
+        - L’opérateur ! signifie littéralement « non ». On l’utilise pour renvoyer true si une expression renvoie false et inversement :  
+
+            ```JS
+            let a = 17.5;
+            let b = 17.5;
+            let c = 17.2;
+            let d = true;
+            let e = false;
+            console.log(!(a == b)); //false
+            console.log(!(a > b)); //true
+            console.log(! d); //false
+            console.log(! e); //true
+            ```
+            - Dans les deux premiers console.log, on place les expressions a == b et a > b entre parenthèses pour indiquer que si l’expression en entier renvoie true, alors, c’est false qui sera affiché et inversement.  
+            
+            - Les parenthèses permettent d’inverser le booléen renvoyé par toute l’expression et pas seulement la variable qui vient tout de suite après l’opérateur : !.  
