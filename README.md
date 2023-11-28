@@ -428,3 +428,278 @@
                 ```HTML
                 <script src="scripts/script.js" defer></script> <!-- Ajouter "defer" à la suite du fichier script.js -->
                 ```
+
+##
+## ***__Les variables en JS__***  
+
+- ### ***Introduction aux variables et exemples d'utilisation en JS***  
+
+    - #### ***Introduction***  
+
+        - Visual Studio Code (VScode) est un éditeur de code source léger, mais puissant, qui s'exécute sur votre bureau et qui est disponible pour Windows, macOS et Linux. Il intègre la prise en charge de JavaScript, TypeScript et Node.js. Il dispose d'un riche écosystème d'extensions pour d'autres langages et environnements d'exécution (tels que C++, C#, Java, Python, PHP, Go, .NET).  
+
+            - Pour le télécharger, suivez ce lien : [Visual Studio Code](https://code.visualstudio.com/Download)  
+
+            - Pour consulter la documentation : [Documentation Visual Studio Code](https://code.visualstudio.com/docs)
+
+    - #### ***Définition d’une variable***  
+
+        - Une variable est un élément fondamental en programmation qui permet de stocker, manipuler et référencer des données dans un programme.  
+
+        - Dans le contexte de JavaScript, une variable est un conteneur pour une valeur qui peut être de différents types, tels que :  
+
+            - Des nombres  
+            
+            - Des chaînes de caractères  
+            
+            - Des objets  
+            
+            - Des tableaux  
+            
+            - Des fonctions, etc.  
+        
+        - Une variable est définie par un identifiant (son nom) et une valeur.
+
+        - L'identifiant est utilisé pour accéder à la valeur stockée dans la variable et pour modifier cette valeur si nécessaire.  
+
+        - En JavaScript, les variables peuvent être déclarées en utilisant les mots-clés 'var', 'let' et 'const'. Chacun de ces mots-clés possède des propriétés et des comportements spécifiques qui influencent la portée, l’assignation et la déclaration des variables.
+
+    - #### ***Utilité des variables***  
+
+        - Les variables jouent un rôle essentiel dans la programmation, car elles permettent aux développeurs de stocker, organiser et manipuler des données de manière flexible et efficace.  
+
+        - Parmi leurs principales utilisations, on trouve le stockage de données, où les variables conservent des informations pour une utilisation ultérieure dans le programme et peuvent contenir divers types de données.  
+
+        - les variables contribuent à la réutilisation du code, réduisant ainsi la redondance en stockant des valeurs ou des références fréquemment utilisées.  
+
+        - Les variables simplifient également les calculs en facilitant les opérations mathématiques et logiques complexes, en stockant les résultats intermédiaires ou en agissant comme des compteurs.  
+
+        - Au niveau de l'organisation du code, les variables aident à structurer et à regrouper des informations connexes, améliorant ainsi la lisibilité et la maintenabilité du code en permettant aux développeurs de donner des noms significatifs aux données.  
+
+    - #### ***Types de variables***  
+
+        - ***Les nombres à virgule Flottante (Float)***  
+
+            - Les nombres à virgule flottante, également connus sous le nom de nombres décimaux, sont utilisés en JavaScript pour représenter des nombres avec des valeurs décimales.  
+
+            - Les variables de ce type sont utilisées pour stocker des nombres réels, tels que des nombres décimaux ou des nombres avec une partie décimale.  
+            
+            - En JavaScript, les nombres à virgule flottante sont représentés par le type de données ***"number"***.  
+
+            - Exemple :  
+
+                ```JS
+                let pi = 3.14159; // Déclaration d'une variable avec un nombre à virgule flottante
+                console.log(pi); // Affiche : 3.14159
+                ```
+
+        - ***Les nombres entiers (Integer)***  
+
+            - Integer est utilisé en JavaScript pour représenter un nombre entier sans partie décimale.  
+
+            - Ce type de variable est utilisé pour stocker des nombres entiers, tels que des nombres de comptages ou des identifiants.  
+
+            - En JavaScript, les entiers sont également représentés par le type de données ***"number"***.  
+
+            - Exemple :  
+
+                ```JS
+                let age = 25; // Déclaration d'une variable avec un nombre entier
+                console.log(age); // Affiche : 25
+                ```
+
+        - ***Les chaînes de caractères (String)***  
+
+            - On retrouve les chaînes de caractères en JavaScript pour représenter du texte.  
+            
+            - Les variables de ce type sont utilisées pour stocker des séquences de caractères, comme des mots, des phrases ou des adresses électroniques.  
+            
+            - En JavaScript, les chaînes sont représentées par le type de données ***"string"*** et peuvent être déclarées avec des guillemets simples (' ') ou doubles (" ").
+
+            - Exemple :  
+
+                ```JS
+                let nom = 'Alice'; // Déclaration d'une variable avec une chaîne de caractères
+                console.log(nom); // Affiche : Alice
+                ```
+
+        - ***Les Booléens (Boolean)***  
+
+            - Les valeurs booléennes sont utilisées en JavaScript pour représenter des valeurs de vérité, c'est-à-dire des valeurs qui sont vraies ou fausses.  
+            
+            - Ce type de variable est utilisé pour stocker des états logiques, tels que des conditions ou des options d'activation/désactivation.  
+            
+            - En JavaScript, les valeurs booléennes sont représentées par le type de données ***"Boolean"***.
+
+            - Exemple : 
+
+                ```JS
+                let estActif = true; // Déclaration d'une variable avec une valeur booléenne
+                console.log(estActif); // Affiche : true
+                ```
+
+        - ***Les tableaux (Array)***  
+
+            - En JavaScript, les tableaux sont utilisés pour stocker plusieurs valeurs dans une seule variable.  
+            
+            - Ce type de variable est utilisé pour représenter une collection de données, comme une liste d'éléments ou une série de valeurs.  
+            
+            - En JavaScript, les tableaux sont représentés par le type de données ***"array"*** et peuvent contenir des valeurs de différents types.  
+
+            - Exemple :  
+
+                ```JS
+                let nombres = [1, 2, 3, 4, 5];
+                nombres.forEach((nombre) => {
+                console.log(nombre);
+                }); // Affiche : 1,2,3,4,5
+                ```
+
+    - #### ***Déclaration de variables en JavaScript***  
+
+        - ***Utilisation de 'var'***  
+
+            - L'utilisation de ***'var'*** en JavaScript concerne la déclaration de variables qui peuvent être réaffectées et dont la portée est définie par la fonction englobante.  
+
+            - 'var' ait été le mot-clé standard pour déclarer des variables dans les versions antérieures de JavaScript, l'introduction de ***'let'*** et ***'const'*** dans ECMAScript 2015 (ES6) a rendu son utilisation moins courante en raison de certaines limitations.  
+
+            - Exemple :  
+
+                ```JS
+                // Déclaration et initialisation d'une variable avec 'var'
+                var age = 25;
+                // Réaffectation d'une nouvelle valeur à la variable
+                age = 26;
+                console.log(age); // Affiche "26"
+                ```
+
+                - Dans cet exemple, nous déclarons une variable appelée age avec la valeur 25. Ensuite, nous réaffectons la valeur 26 à la variable et affichons la nouvelle valeur.  
+
+            - Cependant, il est important de noter que l'utilisation de ***'var'*** présente certaines limitations.  
+            
+            - Par exemple, les variables déclarées avec ***'var'*** sont accessibles en dehors du bloc dans lequel elles sont définies, tant qu'elles restent dans la fonction englobante. Cela peut entraîner des problèmes de lisibilité et des erreurs involontaires.
+
+            - Voici d’ailleurs une erreur type de l’utilisation de ***“var”*** :  
+
+                ```JS
+                function testFunction() {
+                if (false) {
+                var testVariable = "Hello world";
+                }
+                console.log(testVariable);
+                }
+                
+                testFunction(); // Résultat : "undefined"
+                ```
+                - Dans cet exemple, la variable testVariable est déclarée dans une condition qui ne sera jamais satisfaite, car la condition if (false) ne sera jamais vraie. Cependant, la variable est toujours accessible en dehors de cette condition, car elle est déclarée avec le mot-clé ***"var"***.  
+
+                - Lorsque la fonction testFunction() est appelée, elle affiche la valeur de la variable test avec console.log(). Comme la variable est déclarée avec "var" dans la fonction, elle est accessible tout au long de la fonction, même si elle n'a jamais été définie.  
+
+            - Un autre exemple :  
+
+                ```JS
+                if (true) {
+                var prenom = "Alice";
+                }
+                console.log(prenom); // Affiche "Alice" même si la variable est déclarée dans le bloc if
+                ```
+
+                - La Variable ***"prenom"*** sera affichée par le console.log même si elle est déclarée dans la condition.  
+
+            - De plus, les variables déclarées avec 'var' ont une particularité concernant leur portée : elles sont traitées comme si elles étaient déclarées au début de la fonction englobante, même si elles sont définies plus loin dans le code. Ce phénomène peut provoquer des comportements inattendus.  
+
+                - Exemple :  
+
+                    ```JS
+                    console.log(monNom); // Affiche "undefined" au lieu de générer une erreur
+                    var monNom = "Alice";
+                    ```
+
+            - Malgré ces limitations, ***'var'*** est toujours pris en charge pour des raisons de compatibilité avec les anciens codes. Cependant, pour les débutants, il est recommandé d'apprendre et d'utiliser ***'let'*** et ***'const'*** pour déclarer des variables, car ils offrent une meilleure gestion de la portée et préviennent les erreurs liées au ***hoisting***.
+
+                - Le ***hoisting*** est un comportement en JavaScript où les déclarations de variables et de fonctions sont déplacées au début de leur portée respective, c'est-à-dire que la variable ou la fonction peut être utilisée avant d'être déclarée.  
+                
+                - Cela signifie que même si une variable est déclarée plus tard dans le code, elle peut être utilisée avant sa déclaration en raison du ***hoisting***.
+
+        - ***Utilisation de 'let'***  
+
+            - L'utilisation de ***'let'*** en JavaScript concerne la déclaration de variables qui peuvent être réaffectées et dont la portée est définie par le bloc englobant.  
+
+            - ***'let'*** a été introduit dans ECMAScript 2015 (ES6) et est devenu un choix préféré pour déclarer des variables, en particulier pour les débutants, en raison de sa gestion améliorée de la portée et de l'absence de hoisting.  
+
+            - Exemple :  
+
+                ```JS
+                // Déclaration et initialisation d'une variable avec 'let'
+                let age = 25;
+                // Réaffectation d'une nouvelle valeur à la variable
+                age = 26;
+                console.log(age); // Affiche "26"
+                ```
+
+                - Dans cet exemple, nous déclarons une variable appelée age avec la valeur 25. Ensuite, nous réaffectons la valeur 26 à la variable et affichons la nouvelle valeur.  
+
+            - Contrairement à 'var', les variables déclarées avec 'let' ont une portée de bloc, ce qui signifie qu'elles ne sont accessibles qu'à l'intérieur du bloc dans lequel elles sont définies.  
+
+            - Exemple :  
+
+                ```JS
+                if (true) {
+                let prenom = "Alice";
+                }
+                console.log(prenom); // Erreur : prenom n'est pas défini à l'extérieur du bloc if
+                ```
+
+        - ***Utilisation de 'const'***  
+
+            - L'utilisation de ***'const'*** en JavaScript concerne la déclaration de variables dont la valeur ne peut pas être modifiée une fois qu'elles ont été initialisées.  
+
+            - ***'const'*** a été introduit dans ECMAScript 2015 (ES6) et est devenu un choix préféré pour déclarer des variables immuables, en raison de sa gestion améliorée de la portée et de l'absence de hoisting.  
+
+            - Exemple :  
+
+                ```JS
+                // Déclaration et initialisation d'une variable avec 'const'
+                const age = 25;
+                // Tentative de réaffectation d'une nouvelle valeur à la variable
+                age = 26; // Erreur : tentative de réaffecter une valeur à une constante
+                ```
+
+                - Dans cet exemple, nous déclarons une variable appelée age avec la valeur 25 en utilisant 'const'. Si nous essayons de réaffecter la valeur 26 à la variable, cela générera une erreur, car la valeur d'une constante ne peut pas être modifiée une fois qu'elle a été initialisée.
+
+            - ***Il est recommandé d'utiliser 'const' pour déclarer des variables immuables et de se familiariser avec 'let' pour les variables dont la valeur doit être modifiée.***  
+
+    - #### ***Comparaison entre 'var', 'let' et 'const'***  
+
+        - En ce qui concerne la portée, il convient de noter que ***'var'*** a une portée de fonction, c'est-à-dire qu'elle peut être appelée n'importe où dans la fonction où elle est déclarée.  
+
+        - En revanche, ***'let'*** et ***'const'*** ont une portée de bloc, ce qui signifie qu'elles sont uniquement accessibles dans le bloc de code où elles sont déclarées, généralement un couple de ***{ }***.  
+
+        - En ce qui concerne la réaffectation, il est important de noter que ***'var'*** et ***'let'*** peuvent être réaffectées à tout moment, ce qui signifie que leur valeur peut être modifiée après leur déclaration.  
+        
+            - En revanche, une fois que ***'const'*** a été déclarée et initialisée, elle ne peut pas être réaffectée.  
+
+        - En ce qui concerne le hoisting, cela signifie que la déclaration de ***'var'*** et ***'let'*** sont élevées en haut de leur scope, c'est-à-dire qu'elles peuvent être appelées avant leur déclaration effective. Toutefois, seule la déclaration de ***'var'*** est ***"hoisted"***, pas son affectation.
+
+            - En revanche, ***'const'*** n'est pas soumise au hoisting.
+
+        - Le ***"scope"*** se réfère à la portée ou à l'étendue des variables déclarées en JavaScript. En d'autres termes, le scope détermine où dans le code une variable peut être utilisée ou référencée.
+
+- ### ***Bonnes pratiques et exercices de compréhension***  
+
+    - #### ***Bonnes pratiques pour déclarer et utiliser les variables en JavaScript***  
+
+        - La première bonne pratique consiste à nommer les variables de manière significative.  
+
+        - Évitez les noms génériques tels que 'a', 'b' ou 'x' qui peuvent entraîner des erreurs et rendre le code difficile à comprendre.  
+
+        - Il est essentiel d'utiliser la portée de variable appropriée. En JavaScript, la portée d'une variable définit où elle peut être utilisée dans un programme.  
+
+        - Il est également recommandé d'éviter les variables globales autant que possible. En effet, les variables globales sont accessibles depuis n'importe où dans le programme, ce qui peut rendre le code difficile à comprendre et à maintenir.  
+
+        - Toutes les variables doivent être déclarées avant leur utilisation dans un programme.  
+
+        - Il est conseillé d'utiliser ***'const'*** pour les valeurs constantes telles que les nombres pi ou les adresses URL qui ne changent pas tout au long du programme.  
+
+        - Pour les variables qui changent de valeur tout au long du programme, il est recommandé d'utiliser ***'let'***.  
+
