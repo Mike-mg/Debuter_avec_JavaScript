@@ -584,7 +584,7 @@
                 ```JS
                 function testFunction() {
                 if (false) {
-                var testVariable = "Hello world";
+                    var testVariable = "Hello world";
                 }
                 console.log(testVariable);
                 }
@@ -599,7 +599,7 @@
 
                 ```JS
                 if (true) {
-                var prenom = "Alice";
+                    var prenom = "Alice";
                 }
                 console.log(prenom); // Affiche "Alice" même si la variable est déclarée dans le bloc if
                 ```
@@ -645,7 +645,7 @@
 
                 ```JS
                 if (true) {
-                let prenom = "Alice";
+                    let prenom = "Alice";
                 }
                 console.log(prenom); // Erreur : prenom n'est pas défini à l'extérieur du bloc if
                 ```
@@ -1031,7 +1031,7 @@
 
             ```JS
             if (/*condition*/) {
-            //instructions;
+                //instructions;
             }
             ```
 
@@ -1040,7 +1040,7 @@
                 ```JS
                 const nombre = 11;
                 if (nombre > 10) {
-                console.log("Le nombre " + nombre + " est plus grand que 10");
+                    console.log("Le nombre " + nombre + " est plus grand que 10");
                 }
                 ```
                 - On peut voir que l’on spécifie comme condition l’expression nombre > 10. Comme la constante nombre a pour valeur 11, et que 11 est plus grand que 10, alors l’instruction console.log("Le nombre" + nombre + " est plus grand que 10"); est exécutée. Donc la console affiche : le nombre 11 est plus grand que 10.  
@@ -1050,7 +1050,7 @@
                 ```JS
                 const nombre = 10;
                 if (nombre > 10) {
-                console.log("Le nombre " + nombre + " est plus grand que 10");
+                    console.log("Le nombre " + nombre + " est plus grand que 10");
                 }
                 ```
                 - Étant donné que nombre n’est pas strictement supérieur à 10, alors l’expression nombre > 10 va renvoyer false. Donc l’instruction console.log("Le nombre " + nombre + " est plus grand que 10"); ne sera pas exécutée. La console n’affichera rien dans ce cas. On peut voir qu’on peut insérer plusieurs lignes de codes qui seront exécutées si la condition renvoie true.
@@ -1063,8 +1063,8 @@
                 const portes = 5;
                 let prix;
                 if (marque == "Peugeot" || marque == "BMW") {
-                prix = (cv * 100 + portes * 30);
-                console.log ("Prix = " + prix);
+                    prix = (cv * 100 + portes * 30);
+                    console.log ("Prix = " + prix);
                 }
                 ```
                 - Dans ce cas, l’expression marque == "Peugeot" || marque == "BMW" va renvoyer true puisque la variable marque est définie sur la chaîne de caractères "Peugeot". Les deux lignes dans le corps du if (c’est-à-dire les lignes présentes dans les accolades du if) sont donc exécutées, le prix est calculé et affiché dans une chaîne, via la console.  
@@ -1077,8 +1077,8 @@
                 const portes = 5;
                 let prix;
                 if (marque == "Peugeot" || marque == "BMW") {
-                prix = (cv * 100 + portes * 30);
-                console.log ("Prix = " + prix);
+                    prix = (cv * 100 + portes * 30);
+                    console.log ("Prix = " + prix);
                 }
                 ```
                 - On peut voir qu’aucune des deux instructions du corps de la condition if ne sont exécutées.
@@ -1090,10 +1090,10 @@
 
             ```JS
             if (/*condition*/) {
-            //instructions;
+                //instructions;
             }
             else {
-            //instructions;
+                //instructions;
             }
             ```  
         
@@ -1105,11 +1105,11 @@
             const portes = 5;
             let prix;
             if (marque == "Peugeot" || marque == "BMW") {
-            prix = (cv * 100 + portes * 30);
-            console.log ("Prix = " + prix);
+                prix = (cv * 100 + portes * 30);
+                console.log ("Prix = " + prix);
             }
             else {
-            console.log("La marque " + marque + " n'est pas valide");
+                console.log("La marque " + marque + " n'est pas valide");
             }
             ```
             - Dans ce cas, comme l’expression de la condition renvoie false, c’est l’instruction du else qui est exécutée.  
@@ -1125,11 +1125,11 @@
             const portes = 5;
             let prix;
             if (marque == "Peugeot" || marque == "BMW") {
-            prix = (cv * 100 + portes * 30);
-            console.log ("Prix = " + prix);
+                prix = (cv * 100 + portes * 30);
+                console.log ("Prix = " + prix);
             }
             else {
-            console.log("La marque " + marque + " n'est pas valide");
+                console.log("La marque " + marque + " n'est pas valide");
             }
             ```
             - Alors, ce sont les premières instructions (celles du if) qui sont exécutées.  
@@ -1145,13 +1145,13 @@
 
             ```JS
             if (/*condition 1*/) {
-            //instructions;
+                //instructions;
             }
             else if (/*condition 2*/) {
-            //instructions;
+                //instructions;
             }
             else {
-            //instructions;
+                //instructions;
             }
             ```
         
@@ -1165,15 +1165,15 @@
                 const portes = 5;
                 let prix;
                 if ((marque == "Peugeot" || marque == "BMW") && cv <= 150) {
-                prix = (cv * 100 + portes * 30);
-                console.log ("Prix = " + prix);
+                    prix = (cv * 100 + portes * 30);
+                    console.log ("Prix = " + prix);
                 }
                 else if (marque == "Peugeot" || marque == "BMW") {
-                prix = ((cv * 100 + portes * 30) + 2000);
-                console.log ("Prix taxé = " + prix);
+                    prix = ((cv * 100 + portes * 30) + 2000);
+                    console.log ("Prix taxé = " + prix);
                 }
                 else {
-                console.log("La marque " + marque + " n'est pas valide");
+                    console.log("La marque " + marque + " n'est pas valide");
                 }
                 ```  
                 - Dans cet exemple, la condition vérifie si la marque est « Peugeot » ou « BMW », et si le nombre de cv est inférieur ou égal à 150. Comme le nombre de cv n’est pas inférieur ou égal à 150, l’expression de la condition renvoie ***false***. Les instructions du ***if*** ne sont pas exécutées et la condition du ***else if*** est donc traitée. Comme la marque est égale à **Peugeot**, l’expression de la condition (du ***else if***) est validée, elle renvoie ***true*** et les instructions du corps du ***else if*** sont exécutées : le prix est calculé avec une taxe de 2 000 et le prix taxé est affiché.  
@@ -1199,16 +1199,16 @@
                 ```JS
                 switch (/*expression*/) {
                 case /*valeur 1*/:
-                //instructions 1;
+                    //instructions 1;
                 break;
                 case /*valeur 2*/:
-                //instructions 2;
+                    //instructions 2;
                 break;
                 case /*valeur 3*/:
-                //instructions 3;
+                    //instructions 3;
                 break;
                 case /*valeur 4*/:
-                //instructions 4;
+                    //instructions 4;
                 break;
                 }
                 ```  
@@ -1220,20 +1220,20 @@
             
             switch (marque) {
             case "Apple":
-            console.log ("Smarhphone haut de gamme avec système IOS");    
-            break;
+                console.log ("Smarhphone haut de gamme avec système IOS");    
+                break;
 
             case "Samsung":
-            console.log ("Smartphone haut de gamme avec système Android");  
-            break;
+                console.log ("Smartphone haut de gamme avec système Android");  
+                break;
             
             case "Xiaomi":
-            console.log ("Smartphone bon marché avec système Android"); 
-            break;
+                console.log ("Smartphone bon marché avec système Android"); 
+                break;
             
             case "Huawei":
-            console.log ("Smartphone bon marché avec système Android");
-            break;
+                console.log ("Smartphone bon marché avec système Android");
+                break;
             }
             ```  
             - Dans ce cas, le switch va vérifier à chaque case (à chaque cas) si marque est égale à "Huawei". Si ce n’est pas le cas, elle passe au traitement du case suivant. C’est donc pour le case "Huawei" que l’instruction va être déclenchée, donc c’est l’instruction console.log "Smartphone bon marché avec système Android;" qui est exécutée.  
@@ -1249,24 +1249,24 @@
             switch (marque) {
 
             case "Apple":
-            console.log("Smartphone haut de gamme avec système IOS");
-            break;
+                console.log("Smartphone haut de gamme avec système IOS");
+                break;
 
             case "Samsung":
-            console.log("Smartphone haut de gamme avec système Android");
-            break;
+                console.log("Smartphone haut de gamme avec système Android");
+                break;
 
             case "Xiaomi":
-            console.log("Smartphone bon marché avec système Android");
-            break;
+                console.log("Smartphone bon marché avec système Android");
+                break;
 
             case "Huawei":
-            console.log("Smartphone bon marché avec système Android");
-            break;
+                console.log("Smartphone bon marché avec système Android");
+                break;
 
             default:
-            console.log("Marque non référencée");
-            break;
+                console.log("Marque non référencée");
+                break;
             }
             ```  
 
@@ -1281,19 +1281,19 @@
             ```JS
             const marque = "Huawei";
             switch (marque) {
-            case "Apple":
-            console.log("Smartphone haut de gamme avec système IOS");
-            break;
+                case "Apple":
+                console.log("Smartphone haut de gamme avec système IOS");
+                break;
             case "Samsung":
-            console.log("Smartphone haut de gamme avec système Android");
-            break;
-            case "Xiaomi":
+                console.log("Smartphone haut de gamme avec système Android");
+                break;
+                case "Xiaomi":
             case "Huawei":
-            console.log("Smartphone bon marché avec système Android");
-            break;
+                console.log("Smartphone bon marché avec système Android");
+                break;
             default:
-            console.log("Marque non référencée");
-            break;
+                console.log("Marque non référencée");
+                break;
             }
             ```
             - On peut voir que ça fonctionne, les instructions exécutées seront les mêmes pour les marques « Xiaomi » et « Huawei », à savoir :
@@ -1302,3 +1302,372 @@
                 console.log("Smartphone bon marché avec système Android");
                 break;
                 ```
+
+##
+## ***__Les boucles__***  
+
+- ### ***Boucle for***  
+
+  - #### ***Console log***  
+
+    - Dans le cadre de ce cours, vous serez amené à utiliser nos exemples pour comprendre de quoi il retourne et avoir un retour visuel sur le code. Pour ce faire, vous devez :  
+
+        - Effectuer un clic droit sur la page  
+
+        - Sélectionner l’option « Inspecter »  
+
+        - Vous rendre dans « Console »  
+
+    - Cela fait, vous aurez un aperçu des informations supposées se trouver dans console.log().  
+
+  - #### ***Première utilisation de la boucle for***  
+
+    - ***La boucle for***  
+
+        - La boucle for est une boucle vraiment importante en programmation.  
+        
+        - Pour faire simple, disons qu’on peut l’utiliser dans tous les cas où, juste avant l’exécution de la boucle, le nombre d’itérations (de tours de boucle) est fixé.  
+        
+        - Autrement dit, le nombre d’itérations ne changera pas ou ne sera pas déterminé lors de l’exécution des itérations de la boucle.  
+
+    - ***Première façon d’utiliser la boucle for***  
+
+        - La première manière d’utiliser la boucle for se fait avec cette syntaxe :  
+
+            ```JS
+            for (/*initialisation*/; /*condition*/; /*incrementation*/) {
+                //instructions;
+            }
+            ```
+            - Dans les paramètres du for, nous allons spécifier :  
+
+                1. Initialisation : nous allons initialiser une variable qui servira de compteur à notre boucle.  
+
+                1. Condition : nous allons définir la condition qui déterminera le nombre d’itérations.  
+
+                1. Incrémentation : nous allons définir l’incrémentation de notre compteur.  
+
+
+        - Pour bien comprendre, voyons un exemple simple :  
+
+            ```JS
+            for (let i = 1; i <= 10; i ++) {
+                console.log (i);
+            }
+            ```
+            - Dans cet exemple, dans les paramètres du for, nous initialisons le compteur i en le définissant sur le nombre 1.  
+            
+            - Nous indiquons ensuite que la boucle devra se répéter tant que i est inférieure ou égale à 10.  
+            
+            - Enfin, nous incrémentons à chaque tour de boucle la variable i. L’instruction à réitérer est l’affichage dans la console de la variable i. On peut voir que la boucle fonctionne ainsi :  
+
+                1. Le programme vérifie si i est inférieure ou égale à 10. Or i est égale à 1. L’expression i <= 10 renvoie donc true. Une première itération de la boucle est lancée et la console affiche i, donc 1.  
+                
+                1. Le programme vérifie si i est inférieure ou égale à 10. Or, i a été incrémentée et est maintenant égale à 2. L’expression i <= 10 renvoie donc true. Une deuxième itération de la boucle est lancée et la console affiche i, donc 2.  
+
+                1. Etc.  
+
+            - Finalement, lorsque 10 tours de boucles ont été effectués, la variable i est incrémentée et vaut 11. L’expression i <= 10 renvoie donc false. La boucle s’arrête alors.  
+
+            - On peut constater qu’avant chaque tour de boucle, la condition est testée et le résultat détermine si une nouvelle itération aura lieu ou non.  
+
+    - ***Tableau***  
+
+        - Pour faire simple, en JavaScript, un tableau est une liste d’éléments ordonnés stockés dans une variable. On utilise les crochets pour stocker des valeurs dans un tableau.  
+
+        - Par exemple :  
+
+            ```JS
+            let tableau = ["valeur 1", "valeur 2"];
+            ```
+            - Chaque élément du tableau est accessible via son index, sachant que le premier élément du tableau à pour index 0, le second 1, le troisième 2, etc.  
+
+        - On peut récupérer un élément de ce tableau comme ceci :  
+
+            ```JS
+            tableau[1]; // = "valeur 2"
+            ```
+
+        - Maintenant prenons un autre exemple de boucle for interagissant avec un tableau :  
+
+            ```JS
+            const nombre = 10;
+            let table = [];
+            for (let i = 1; i <= 10; i ++) {
+                let resultat = nombre * i;
+                table.push(resultat)
+            };
+            ```
+            - Ici, l’objectif de notre boucle est de dresser à l’intérieur d’un tableau et plus particulièrement dans notre cas faire la table de multiplication d’un nombre.  
+            
+            - Nous commençons par définir la variable ***nombre***, puis nous déclarons un tableau (avec les crochets) que nous appelons ***table***.  
+
+            - Celui-ci contiendra tous les nombres de la table de ***nombre***. Dans le ***for***, on ne change rien, car on souhaite que la première valeur de i soit 1 et qu’il y ait 10 itérations. À chaque tour de boucle, nous déclarons et définissons une variable ***resultat*** qui stockera le produit de ***nombre*** par ***i*** (qui vaudra 1 puis 2, puis 3, etc., jusqu’à 10).  
+
+            - On ajoute ensuite à chaque itération le résultat dans notre tableau table. On peut voir que ce script fonctionne bien, d’ailleurs, si on fait un console.log de la 4e valeur de table (donc avec l’index 3), on obtient :  
+
+                ```JS                
+                const nombre = 10;
+                let table = [];
+                for (let i = 1; i <= 10; i ++) {
+                    let resultat = nombre * i;
+                    table.push(resultat);
+                }
+                console.log(table[3]); // = 40 (10 x 4)
+                ```
+
+  - #### ***Utiliser for/in***  
+
+    - Le système ***for/in*** va nous permettre d’utiliser la boucle ***for*** à travers les propriétés d’un objet. La syntaxe est la suivante :  
+
+        ```JS
+        for (/*variable*/ in /*objet*/) {
+            //instructions;
+        }
+        ```
+    - Le concept d’objet en programmation ne vous est peut-être pas familier et c’est normal. Pour l’instant, sans rentrer dans les détails, dites-vous qu’un objet est une entité ; un ensemble de données qui contient des propriétés qui le caractérisent. Prenons un exemple :  
+
+        ```JS
+        let animation = new Animation();
+        for (let i in animation) {
+            console.log(i);
+        }
+        ```
+        - Ici, nous créons un objet que l’on appelle ***animation*** (c’est le nom de la variable) et il est de type ***Animation***.  
+        
+        - Cet objet a de nombreuses propriétés, et, avec la boucle ***for***, on peut parcourir chacune de ces propriétés pour en afficher une par une leur nom (et non leur valeur).  
+        
+        - Dans les paramètres, nous déclarons la variable ***i*** qui représentera à chaque tour de boucle une propriété dans l’objet ***animation***. On peut voir que la console affiche le nom de toutes les propriétés de l’objet. Toutefois, ce concept reste peut-être un peu flou. Voyons ce que cela donne si on parcourt un tableau avec cette méthode :  
+
+            ```JS
+            let tableau = ["Apple", "HP", "Acer"];
+            for (let i in tableau) {
+                console.log(i);
+            }
+            ```
+            - On peut voir que la console affiche 0, 1, 2.  
+            
+            - Pourquoi ? Tout simplement parce que mon tableau a 3 propriétés correspondant aux index des éléments qui le composent. En ce sens, cela pourrait être intéressant d’utiliser ce système pour afficher la valeur des éléments de notre tableau comme ceci :
+
+            ```JS
+            let tableau = ["Apple", "HP", "Acer"];
+            for (let i in tableau) {
+                console.log(tableau[i]);
+            }
+            ```
+            - Effectivement, cela fonctionne, la console affiche chaque valeur du tableau. 
+            
+            - Cependant, il n’est pas préconisé de procéder ainsi pour récupérer les valeurs d’un tableau.  
+            
+            - Pourquoi ? Tout bonnement parce que le ***in*** permet de parcourir les propriétés du tableau. Si l’on ajoute des propriétés à notre tableau (qui ne sont pas nécessairement des éléments du tableau), alors la boucle for les parcourra aussi, ce qui posera un problème (puisqu’on aura les éléments du tableau et les autres propriétés).  
+            
+            - En ce sens, quand on veut parcourir un tableau, il est important d’utiliser le système ***for/of***.  
+
+  - #### ***Utiliser for/of***  
+
+    - La boucle for/of permet de parcourir un objet itérable et de récupérer ses valeurs. C’est le cas par exemple des tableaux. Si l’on reprend notre exemple précédent et que l’on cherche à afficher dans la console chaque élément du tableau, on peut faire simplement :  
+
+        ```JS
+        let tableau = ["Apple", "HP", "Acer"];
+        for (let i of tableau) {
+            console.log(i);
+        }
+        ```
+        - Cela fonctionne, car à chaque tour de boucle, i prend la valeur d’un élément de tableau, et la boucle parcourt tous les éléments du tableau. Avec la boucle for/of, on peut donc rapidement récupérer les valeurs d’un tableau.  
+
+    - Modifions-la pour que notre programme permette de concaténer dans une chaîne de caractères les valeurs des différents éléments du tableau :  
+
+        ```JS
+        let tableau = ["Apple", "HP", "Acer"];
+        let marques = "";
+        for (let i of tableau) {
+            marques += i + ", ";
+        }
+        console.log (marques);
+        ```
+        - On peut voir que la console affiche : Apple, HP, Acer,
+
+        - À chaque tour de boucle, le programme ajoute à la fin de la chaîne de caractères marques la valeur de i qui contient une valeur d’un élément du tableau. Tous les éléments du tableau sont parcourus.
+
+- ### ***Boucle while***  
+
+    - #### ***Boucle while***  
+
+        - À la différence de la boucle for, nous utiliserons en général la boucle while quand, juste avant l’exécution de la première itération de la boucle, le nombre d’itérations n’est pas encore fixé.  
+        
+        - Cette règle n’est toutefois pas absolue. En réalité, dans de nombreux cas où l’on utilise une boucle for, il est également possible d’utiliser une boucle while. Voyons comment utiliser la boucle while.
+
+        - ***Utilisation de la boucle while***  
+
+            - La syntaxe de la boucle while est :  
+
+                ```JS
+                while (/*condition*/) {
+                    //instructions;
+                }
+                ```
+                - On indique simplement en paramètre du while la condition pour qu’une itération se produise.  
+                
+                - Le programme commence par vérifier si la condition renvoie true et si c’est le cas, elle exécute les instructions de la boucle.  
+                
+                - Puis, le programme vérifie à nouveau la condition et si elle renvoie true, alors, les instructions sont à nouveau exécutées, ainsi de suite.  
+
+        - On voit que le système de while est assez simple à comprendre. Prenons un exemple simple :  
+
+        ```JS
+        let nombre = 1;
+        while (nombre <= 10) {
+            console.log ("Le nombre est : " + nombre);
+            nombre += 2;
+            nombre -=0.5;
+        }
+        console.log (nombre)
+        ```
+        - Ici, nous définissons une variable nombre sur la valeur de 1.  
+        
+        - Puis, dans le while, nous passons en paramètre l’expression conditionnelle nombre <= 10. 
+        
+        - Tant que nombre sera inférieure ou égale à 10, alors la boucle continuera de s’exécuter.  
+        
+        - On peut voir que dans les instructions, on commence par afficher le nombre dans une chaîne concaténée, puis on lui ajoute 2 et on lui retire 0,5.  
+        
+        - Cet ensemble d’instructions sera exécuté à chaque itération. Toutefois, en quel sens peut-on dire que le nombre d’itérations n’est pas fixé avant la première itération ?
+
+            - Si on regarde la boucle, on peut voir que, hors instructions (c’est-à-dire hors du corps de la boucle), le nombre d’itérations est inconnu.  
+            
+            - Ce sont, dans cet exemple, les instructions de la boucle qui permettent de déterminer le nombre d’itérations en fonction de la condition (car on modifie la variable nombre dans les instructions du while, tandis que la condition porte sur cette même variable nombre).  
+            
+            - Dans ce cas, il est donc judicieux d’utiliser la boucle while. À la différence, quand nous utilisons la boucle for, le nombre d’itérations est fixé dans les paramètres de la boucle (sauf si on ajoute des instructions de type break ou continue que nous aborderons).  
+            
+            - Pour notre while, la console affichera donc :  
+
+                1. Le nombre est : 1
+
+                1. Le nombre est : 2.5
+
+                1. Le nombre est : 4
+
+                1. Le nombre est : 5.5
+
+                1. Le nombre est : 7
+
+                1. Le nombre est : 8.5
+
+                1. Le nombre est : 10
+
+                1. 11.5
+
+                     - On peut voir qu’après la 7e itération, le programme vérifie la valeur de nombre qui est maintenant égale à 11.5. La variable nombre étant supérieure à 10, le programme sort de la boucle.
+
+        - ***Utilisation de la boucle do/while***  
+
+            - Comme vous avez pu le voir, lorsque l'on utilise un while, le programme commence par vérifier la condition puis, si l’expression conditionnelle renvoie true, il lance une première itération de la boucle, sinon, aucune itération n’est lancée.  
+
+            - Prenons l’exemple suivant :  
+
+            ```JS
+            let cv = 100;
+            while (cv > 100 && cv <= 110) {
+                console.log ("La voiture a " + cv + " cv");
+                cv ++
+            }
+            ```
+            - On peut voir dans ce script que la condition du while est que cv soit strictement supérieure à 100 et inférieure ou égale à 110. Concrètement, la boucle ne va jamais se lancer, car cv est égale à 100.  
+
+            - Le programme vérifie l’expression cv > 100 && cv <= 110 et, étant donné qu’elle renvoie false, alors aucune itération de la boucle n’est opérée.  
+            
+            - Il nous faudrait donc un système qui lance une première itération de la boucle avant de contrôler l’expression conditionnelle. C’est ce que permet le do/while.  
+
+        - ***Do/while***  
+
+            - Syntaxe :  
+
+                ```JS
+                do {
+                    //instructions; 
+                } while (/*condition*/);
+                ```
+
+            - Si on modifie notre exemple :  
+
+                ```JS
+                let cv = 100;
+                do {
+                    console.log ("La voiture a " + cv + " cv");
+                    cv ++;
+                } while (cv > 100 && cv <= 110);
+                ```
+                - Le do/while permet donc d’opérer une première itération de la boucle avant de vérifier la condition.  
+
+
+        - ***Éviter les boucles infinies***  
+
+            - Abordons maintenant une erreur à éviter, les boucles infinies.  
+
+            - Un problème qui peut avoir lieu est celui des boucles infinies : des boucles qui ne s’arrêtent jamais et qui font planter le programme.  
+            
+            - Une boucle infinie a lieu quand l’expression de la condition d’un while ne cesse jamais de renvoyer true, c’est-à-dire qu’il n’y a aucune instruction qui va rendre cette condition fausse.  
+
+            ```JS
+            let a = 120;
+            while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
+                console.log(a);
+            }
+            ```
+            - Dans cet exemple, la condition du while spécifie que le type de la variable a doit être un nombre, et que a doit être comprise entre 100 (inclus) et 140 (inclus).  
+            
+            - Étant donné que la variable a est égale à 120, cette condition renvoie true. Toutefois, le problème est qu’aucune instruction ne vient dans le while changer la valeur de a.  
+            
+            - La condition sera alors toujours vérifiée (elle renverra toujours true), et la boucle ne s’arrêtera pas tant que le programme n’est pas stoppé. 
+            
+            - En revanche, si l’on ajoute une incrémentation de la variable dans la boucle, la boucle ne sera plus infinie et le code fonctionnera correctement.  
+
+                - Exemple :  
+
+                    ```JS
+                    let a = 120;
+                    while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
+                        console.log(a);
+                        a ++;
+                    }
+                    ```
+
+        - ***Utilisation de break et continue***  
+
+            - Le mot clé ***break*** permet de sortir d’une boucle, tandis que le mot clé ***continue*** permet de reprendre l’exécution d’une boucle, de passer directement à l’instruction suivante.  
+
+            - Prenons l’exemple où on insère une condition dans une boucle while par exemple :  
+
+                ```JS
+                let a = 110;
+                while (a >= 100 && a <= 150) {
+                console.log(a);
+                a += 10;
+                if (a == 130) {
+                    continue;
+                }
+                else if (a == 140) {
+                    break;
+                }
+                console.log("nv");
+                }
+                console.log("fini");
+                ```
+
+                - Essayons de comprendre comment fonctionne le programme. La console affiche :  
+
+                    1. 110
+                    1. nv
+                    1. 120
+                    1. 130
+                    1. fini
+
+                - La variable a a pour valeur 110. Le while vérifie la condition a >= 100 && a <= 150 qui renvoie true. Une première itération de la boucle est donc lancée. La variable a est affichée dans la console (donc 110) et le programme lui ajoute 10 (a est maintenant égale à 120). Les deux conditions vérifient si a est égale à 130 et si a est égale à 140, mais ce n’est pas le cas. Le programme passe à l’instruction suivante console.log("nv") qui affiche donc « nv » dans la console.
+
+                - Le while vérifie à nouveau la condition a >= 100 && a <= 150. Elle renvoie true, donc une nouvelle itération de la boucle est exécutée. La variable a est affichée dans la console (donc 120) et le programme lui ajoute 10 (a est maintenant égale à 130). La condition if vérifie si a est égale à 130.  Comme c’est le cas, l’instruction du if est exécutée, donc continue. Cette instruction permet de ne pas exécuter la suite de l’itération et de passer à la prochaine itération de la boucle.  
+
+                - Le while vérifie à nouveau la condition a >= 100 && a <= 150. Elle renvoie true, donc une nouvelle itération de la boucle est exécutée. La variable a est affichée dans la console (donc 130) et le programme lui ajoute 10 (a est maintenant égale à 140). La condition if vérifie si a est égale à 130, mais ce n’est pas le cas, le else if est donc traité. Le programme vérifie si a est égale à 140, et c’est bien le cas, donc l’instruction du else if est exécutée, c’est-à-dire le break. Cette instruction fait s’arrêter la boucle et continue le script (après la boucle).  
+
+                - Le console.log("fini") est donc exécuté et la console affiche cette chaîne.  
+
+                - Voilà, c’est un exemple assez basique, mais on peut voir que les instructions break et continue vont permettre de rajouter du potentiel aux boucles. Bien évidemment, ces mots clés peuvent être utilisés avec la boucle for.
