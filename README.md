@@ -1008,3 +1008,297 @@
             - Dans les deux premiers console.log, on place les expressions a == b et a > b entre parenthèses pour indiquer que si l’expression en entier renvoie true, alors, c’est false qui sera affiché et inversement.  
             
             - Les parenthèses permettent d’inverser le booléen renvoyé par toute l’expression et pas seulement la variable qui vient tout de suite après l’opérateur : !.  
+
+##
+## ***__Structures de contrôle en JS__***
+
+- ### ***Structure de contrôle if/else***
+
+    - ***Utilisation de la condition if***  
+
+        - Comme vous le savez, des opérateurs de comparaison peuvent renvoyer un booléen : true ou false. On peut les utiliser pour vérifier si une valeur est égale, inégale, supérieure, etc., à une autre.  
+
+            ```JS
+            let a = 1;
+            let b = 1;
+            console.log(a == b);
+            ```  
+            - L’expression a == b renverra un booléen, ici true, puisque les deux variables sont égales. Si ce n’était pas le cas, elle renverrait false.  
+
+        - nous allons pouvoir utiliser cette structure de contrôle en spécifiant en paramètre une condition, c’est-à-dire une expression qui va renvoyer true ou false. Si et uniquement si cette expression renvoie true, alors l’instruction ou les instructions spécifiées seront exécutées.  
+        
+        - Mais comment écrire une condition if ?  
+
+            ```JS
+            if (/*condition*/) {
+            //instructions;
+            }
+            ```
+
+            - Prenons un exemple tout simple de condition :  
+
+                ```JS
+                const nombre = 11;
+                if (nombre > 10) {
+                console.log("Le nombre " + nombre + " est plus grand que 10");
+                }
+                ```
+                - On peut voir que l’on spécifie comme condition l’expression nombre > 10. Comme la constante nombre a pour valeur 11, et que 11 est plus grand que 10, alors l’instruction console.log("Le nombre" + nombre + " est plus grand que 10"); est exécutée. Donc la console affiche : le nombre 11 est plus grand que 10.  
+
+                - En revanche, on peut voir que, si on définit nombre sur 10 par exemple :  
+
+                ```JS
+                const nombre = 10;
+                if (nombre > 10) {
+                console.log("Le nombre " + nombre + " est plus grand que 10");
+                }
+                ```
+                - Étant donné que nombre n’est pas strictement supérieur à 10, alors l’expression nombre > 10 va renvoyer false. Donc l’instruction console.log("Le nombre " + nombre + " est plus grand que 10"); ne sera pas exécutée. La console n’affichera rien dans ce cas. On peut voir qu’on peut insérer plusieurs lignes de codes qui seront exécutées si la condition renvoie true.
+
+            - Prenons un autre exemple :  
+
+                ```JS
+                const marque = "Peugeot";
+                const cv = 120;
+                const portes = 5;
+                let prix;
+                if (marque == "Peugeot" || marque == "BMW") {
+                prix = (cv * 100 + portes * 30);
+                console.log ("Prix = " + prix);
+                }
+                ```
+                - Dans ce cas, l’expression marque == "Peugeot" || marque == "BMW" va renvoyer true puisque la variable marque est définie sur la chaîne de caractères "Peugeot". Les deux lignes dans le corps du if (c’est-à-dire les lignes présentes dans les accolades du if) sont donc exécutées, le prix est calculé et affiché dans une chaîne, via la console.  
+
+            - Finalement, cette condition permet d’exécuter les deux lignes du corps de la condition if uniquement si la marque est Peugeot ou BMW. Si on prend la marque Renault par exemple :
+
+                ```JS
+                const marque = "Renault";
+                const cv = 120;
+                const portes = 5;
+                let prix;
+                if (marque == "Peugeot" || marque == "BMW") {
+                prix = (cv * 100 + portes * 30);
+                console.log ("Prix = " + prix);
+                }
+                ```
+                - On peut voir qu’aucune des deux instructions du corps de la condition if ne sont exécutées.
+
+
+    - ***Utilisation du mot clé else***  
+
+        - Le mot clé else (qui signifie littéralement « sinon ») permet de dire en quelques sortes : « Si (if) une condition est vérifiée, exécuter les premières instructions, sinon (else), exécuter les secondes instructions ». Pour faire simple, le mot clé else va permettre d’indiquer les instructions à exécuter si l’expression de la condition précédente renvoie false. La syntaxe est très simple :  
+
+            ```JS
+            if (/*condition*/) {
+            //instructions;
+            }
+            else {
+            //instructions;
+            }
+            ```  
+        
+        - Reprenons l’exemple précédent et rajoutons un else pour afficher dans la console une chaîne de caractères si la marque n’est ni Peugeot, ni BMW.  
+
+            ```JS
+            const marque = "Renault";
+            const cv = 120;
+            const portes = 5;
+            let prix;
+            if (marque == "Peugeot" || marque == "BMW") {
+            prix = (cv * 100 + portes * 30);
+            console.log ("Prix = " + prix);
+            }
+            else {
+            console.log("La marque " + marque + " n'est pas valide");
+            }
+            ```
+            - Dans ce cas, comme l’expression de la condition renvoie false, c’est l’instruction du else qui est exécutée.  
+                
+                - Donc la console affiche : La marque Renault n'est pas valide  
+
+
+        - Si l’on change la marque et que l’on écrit BMW :  
+
+            ```JS
+            const marque = "BMW";
+            const cv = 120;
+            const portes = 5;
+            let prix;
+            if (marque == "Peugeot" || marque == "BMW") {
+            prix = (cv * 100 + portes * 30);
+            console.log ("Prix = " + prix);
+            }
+            else {
+            console.log("La marque " + marque + " n'est pas valide");
+            }
+            ```
+            - Alors, ce sont les premières instructions (celles du if) qui sont exécutées.  
+            
+                - La console affiche : Prix = 12150  
+
+
+    - ***Utilisation de else if***  
+
+        - Maintenant, nous pouvons parler de l’instruction else if, littéralement « sinon si ». La structure else if va nous permettre de rajouter une condition si l’expression de la condition précédente renvoie false.  
+
+        - La syntaxe n’est pas bien plus compliquée :  
+
+            ```JS
+            if (/*condition 1*/) {
+            //instructions;
+            }
+            else if (/*condition 2*/) {
+            //instructions;
+            }
+            else {
+            //instructions;
+            }
+            ```
+        
+        - Pour prendre un exemple, on peut améliorer notre script précédent pour que la structure de contrôle exécute :
+
+            - « ***Si (if)*** la marque est "Peugeot" ou "BMW" et si le nombre de cv est inférieur ou égal à 150, calculer le prix et afficher le prix, ***sinon si (else if)*** la marque est "Peugeot" ou "BMW", calculer le prix en ajoutant une taxe de 2 000 € , et afficher le prix taxé, ***sinon (else)***, afficher que la marque n’est pas valide. » Cette condition est cohérente, nous pouvons donc réaliser notre script :  
+
+                ```JS
+                const marque = "Peugeot";
+                const cv = 180;
+                const portes = 5;
+                let prix;
+                if ((marque == "Peugeot" || marque == "BMW") && cv <= 150) {
+                prix = (cv * 100 + portes * 30);
+                console.log ("Prix = " + prix);
+                }
+                else if (marque == "Peugeot" || marque == "BMW") {
+                prix = ((cv * 100 + portes * 30) + 2000);
+                console.log ("Prix taxé = " + prix);
+                }
+                else {
+                console.log("La marque " + marque + " n'est pas valide");
+                }
+                ```  
+                - Dans cet exemple, la condition vérifie si la marque est « Peugeot » ou « BMW », et si le nombre de cv est inférieur ou égal à 150. Comme le nombre de cv n’est pas inférieur ou égal à 150, l’expression de la condition renvoie ***false***. Les instructions du ***if*** ne sont pas exécutées et la condition du ***else if*** est donc traitée. Comme la marque est égale à **Peugeot**, l’expression de la condition (du ***else if***) est validée, elle renvoie ***true*** et les instructions du corps du ***else if*** sont exécutées : le prix est calculé avec une taxe de 2 000 et le prix taxé est affiché.  
+
+                - Le ***else*** aurait été appelé uniquement si la condition du ***else if*** avait été fausse, donc dans le cas présent si la marque n’avait été ni Peugeot, ni BMW.  
+
+                - Bien évidemment, on peut rajouter autant de else if que l’on veut.  
+
+- ### ***Structure de contrôle switch***
+
+    - ***Introduction à switch***
+
+        - En programmation, la structure de contrôle switch existe dans de nombreuses technologies.  
+        
+        - Mais qu’est-ce que c’est au juste ?  
+        
+            - Le terme switch peut se traduire littéralement par « interrupteur » ou le verbe « changer ». 
+            
+            - En programmation, la structure switch, aussi souvent appelée switch/case, permet de facilement répertorier plusieurs valeurs possibles renvoyées par une expression et de définir les instructions pour chaque cas.  
+
+            - La Syntaxe :  
+
+                ```JS
+                switch (/*expression*/) {
+                case /*valeur 1*/:
+                //instructions 1;
+                break;
+                case /*valeur 2*/:
+                //instructions 2;
+                break;
+                case /*valeur 3*/:
+                //instructions 3;
+                break;
+                case /*valeur 4*/:
+                //instructions 4;
+                break;
+                }
+                ```  
+
+        - Prenons un exemple très simple. Nous avons une variable marque qui correspond à la marque d’un téléphone et on souhaite générer un console.log spécifique pour chaque marque. Voici un script qui fonctionne :  
+
+            ```JS
+            const marque = "Huawei";
+            
+            switch (marque) {
+            case "Apple":
+            console.log ("Smarhphone haut de gamme avec système IOS");    
+            break;
+
+            case "Samsung":
+            console.log ("Smartphone haut de gamme avec système Android");  
+            break;
+            
+            case "Xiaomi":
+            console.log ("Smartphone bon marché avec système Android"); 
+            break;
+            
+            case "Huawei":
+            console.log ("Smartphone bon marché avec système Android");
+            break;
+            }
+            ```  
+            - Dans ce cas, le switch va vérifier à chaque case (à chaque cas) si marque est égale à "Huawei". Si ce n’est pas le cas, elle passe au traitement du case suivant. C’est donc pour le case "Huawei" que l’instruction va être déclenchée, donc c’est l’instruction console.log "Smartphone bon marché avec système Android;" qui est exécutée.  
+
+    - ***La clause default***  
+
+        - La clause ***default*** permet d’indiquer les instructions qui seront exécutées « par défaut », c’est-à-dire dans le cas où aucun cas spécifié ne correspond à la valeur renvoyée par l’expression de référence.  
+        
+        - Bien qu’elle soit facultative, il est fortement préconisé de l’utiliser dans un switch. Pour bien comprendre, appliquons cette notion à notre exemple :  
+        
+            ```JS
+            const marque = "Motorola";
+            switch (marque) {
+
+            case "Apple":
+            console.log("Smartphone haut de gamme avec système IOS");
+            break;
+
+            case "Samsung":
+            console.log("Smartphone haut de gamme avec système Android");
+            break;
+
+            case "Xiaomi":
+            console.log("Smartphone bon marché avec système Android");
+            break;
+
+            case "Huawei":
+            console.log("Smartphone bon marché avec système Android");
+            break;
+
+            default:
+            console.log("Marque non référencée");
+            break;
+            }
+            ```  
+
+        - On peut voir qu’en spécifiant la clause ***default***, on indique quelles instructions va exécuter le switch dans le cas où aucun des case ne correspond à la valeur de marque.  
+
+            - On peut cependant constater que notre switch pourrait être amélioré. En effet, pour les marques « Xiaomi » et « Huawei », les instructions sont exactement les mêmes. Il n’y a donc pas besoin de les répéter deux fois. Comment appliquer la même instruction à deux case ?
+
+    - ***Appliquer une même suite d’instructions pour plusieurs cas***  
+
+        - Pour appliquer une même suite d’instructions pour plusieurs cas, il nous faut simplement préciser chaque ***case*** concerné avant d’écrire la suite d’instructions, en respectant la syntaxe. Pour bien comprendre, appliquons cette notion à notre exemple :
+
+            ```JS
+            const marque = "Huawei";
+            switch (marque) {
+            case "Apple":
+            console.log("Smartphone haut de gamme avec système IOS");
+            break;
+            case "Samsung":
+            console.log("Smartphone haut de gamme avec système Android");
+            break;
+            case "Xiaomi":
+            case "Huawei":
+            console.log("Smartphone bon marché avec système Android");
+            break;
+            default:
+            console.log("Marque non référencée");
+            break;
+            }
+            ```
+            - On peut voir que ça fonctionne, les instructions exécutées seront les mêmes pour les marques « Xiaomi » et « Huawei », à savoir :
+
+                ```JS
+                console.log("Smartphone bon marché avec système Android");
+                break;
+                ```
