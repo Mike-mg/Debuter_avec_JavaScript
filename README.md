@@ -1913,4 +1913,424 @@
         console.log(racine(9));
         ```
         - La console affiche donc 3.
+
+##  
+## ***__Les types de données__***  
+
+- ### ***Types numériques***  
+    
+    - #### ***Types numériques***  
+
+        - ***Le type Number***  
+
+            - Le type Number permet de représenter des nombres. Cependant, les nombres représentables grâce au type Number sont compris dans un intervalle précis. Les nombres décimaux entre 2**-1074 et 2**1024 peuvent être représentés. L’intervalle comprenant les nombres entiers représentables d’une manière « safe » est plus restreint.  
+            
+            - Prenons une valeur numérique et affichons son type :  
+
+                ```JS
+                const nombre = 154.78;
+                console.log (typeof nombre);
+                ```
+                - On voit que la console affiche number. Donc nombre est bien de type Number.  
+
+            - On peut noter que les nombres entiers représentables de manière « safe » avec le type Number vont de - (2\**53 - 1) à 2\**53 - 1. Mais que se passe-t-il si on écrit un nombre entier très grand ? Voyons un exemple :  
+
+                ```JS
+                const nombre = 100071992549200345;
+                console.log (nombre);
+                ```
+
+            - On peut voir que la console affiche le nombre 100071992549200350. Mais ce n’est pas le même nombre. Pour quelle raison ? Sans rentrer dans les détails, ce problème d’arrondi est dû au fait que le nombre entier est trop grand pour être représenté par le type Number. Mais alors, comment représenter ce nombre ? En utilisant le type Bigint.  
+
+        - ***Le type BigInt***  
+
+            - Le type Bigint permet de représenter des entiers plus grands que ceux représentables par le biais de Number. Essayons de représenter l’entier précédent avec le type Bigint. Pour cela, nous pouvons utiliser un n que nous ajoutons à la fin du nombre :  
+
+                ```JS
+                const nombre = 100071992549200345n;
+                console.log (nombre);
+                ```
+                - Là ça fonctionne, la console affiche : 100071992549200345n.  
+
+                - D’ailleurs, si on affiche le type de nombre :  
+
+                    ```JS
+                    const nombre = 100071992549200345n;
+                    console.log (typeof nombre);
+                    ```
+                    - La console affiche : bigint. Le nombre est donc bien de type Bigint.  
+
+            - Quand on va réaliser des opérations arithmétiques, il faudra bien veiller à traiter ensemble des valeurs de même type, pour éviter les erreurs. Nous pouvons voir par exemple que si nous réalisons une addition d’un Bigint avec un Number : 
+
+                ```JS
+                const a = 16370197019808913673160913870317n;
+                const b = 16879361;
+                let addition =  a + b;
+                console.log (addition);
+                ```
+
+                - Nous pouvons voir que ce code génère une erreur due à une incompatibilité de types dans une opération. On veillera donc à ce que les deux opérandes d’une opération mathématique soient du même type. Pour corriger ce code, nous pouvons par exemple faire de b un BigInt :  
+
+                    ```JS
+                    const a = 16370197019808913673160913870317n;
+                    const b = 16879361n;
+                    let addition =  a + b;
+                    console.log (addition);
+                    ```
+
+            - À noter que la génération de BigInt doit être raisonnée, car avec de grands nombres, elle peut demander beaucoup de ressources et affecter les performances du programme.  
+
+        - ***NaN***  
+
+            - NaN est un terme, une propriété qu’on va retrouver quand le résultat d’une opération arithmétique n’est pas un nombre. Ce terme signifie littéralement « Not a Number ». Si par exemple, nous essayons de multiplier un nombre par un texte :  
+
+                ```JS
+                const nombre = 12456 * "caractères";
+                console.log(nombre); //NaN
+                ```
+
+            - Un point intéressant en JS, c’est que si nous réalisons une opération arithmétique avec deux nombres dont un est une chaîne de caractères, JS convertit automatiquement la chaîne en nombre, et renvoie le résultat de l’opération :  
+
+                ```JS
+                const nombre = 12456 * "10";
+                console.log(nombre); //124560
+                ```
+            
+                - Dans ce dernier cas, l’opération renverra 124560 et non NaN, puisque la chaîne « 10 » aura été convertie en nombre et que le calcul aura été opéré.  
+
+            - On peut noter que NaN est une valeur assez spéciale en JavaScript. En effet elle est unique, d’ailleurs, elle n’est même pas égale à elle-même :  
+
+                ```JS
+                console.log (NaN === NaN); //false
+                ```
+
+- ### ***Autres types primitifs***  
+
+    - #### ***Autres types primitifs***  
+
+        - ***Type Boolean***  
+
+            - Vous connaissez déjà le type booléen. Une variable de type booléen peut avoir pour valeur true ou false. Donc pour définir une variable de type booléen, on peut simplement définir une variable sur true ou false. Par exemple :  
+
+                ```JS
+                const variable = true;
+                console.log(variable); //true
+                console.log(typeof variable); //boolean
+                ```
+
+                - Comme vous le savez, les booléens sont utilisés comme valeurs de retour de conditions. Ils permettent donc de comparer les données.  
+
+        - ***Type String***  
+
+            - Le type String (chaîne de caractères) permet de représenter du texte. Les chaînes de caractères sont des ensembles de valeurs ordonnées, et indexées. La première valeur à l’indice 0, la seconde 1, etc. Pour définir une chaîne de caractères, nous pouvons définir une variable sur une valeur ou un ensemble de valeurs comprises entre guillemets :  
+
+                ```JS
+                const a = "caractères"
+                console.log(a); //caractères
+                console.log(typeof a); //string
+                ```
+
+            - Voyons un exemple de concaténation de chaînes avec l’opérateur += par exemple :  
+
+                ```JS
+                let a = "caractères";
+                a += " écris";
+                console.log(a); //caractères “écris”
+                console.log(typeof a); //string
+                ```
+
+                - Ici ça fonctionne, on dirait qu’on modifie la chaîne "caractères". Mais vous vous en rappelez, nous avons dit que les types primitifs définissent des valeurs immuables, c’est-à-dire des valeurs qu’on ne peut pas modifier une fois définies. Pourtant, String est bien un type primitif qui définit les chaînes de caractères qui sont donc des valeurs primitives. "caractères" est une valeur primitive. Donc en théorie, on ne peut pas modifier la valeur d’une chaîne. Mais alors comment fonctionnent les opérateurs de concaténation ?  
+
+                - En réalité, la chaîne initiale n’est pas modifiée. L’opérateur += va créer une nouvelle chaîne qui concatène les chaînes « caractères » et « écris ». La variable a sera alors définie sur cette nouvelle chaîne, mais la chaîne de départ « caractères » n’aura pas été modifiée. C’est le même principe pour les opérateurs d’incrémentation ou d’affectation après addition avec les numbers.  
+
+            - Il est préconisé d’utiliser les chaînes de caractères uniquement pour les textes.  
+
+        - ***Type Symbol***  
+
+            - Un symbole est une valeur unique et qui ne peut pas être changée. Les symboles peuvent être utilisés pour créer des clés uniques ciblant une propriété d’un objet, et ainsi éviter les conflits pouvant exister avec des propriétés créées par d’autres instructions de code. C’est peut-être un peu complexe à comprendre comme ça, mais concentrons-nous sur comment créer un symbole. Pour créer un symbole, il nous faut utiliser une fonction : Symbol(). Cette fonction va nous permettre de créer une valeur de type Symbol.  
+
+                ```JS
+                let sy1 = Symbol('marque');
+                console.log(sy1); //Symbol(marque)
+                console.log(typeof sy1); //symbol
+                ```
+
+                - On voit qu’on crée un symbole sy1 défini sur Symbol('marque'). Créons un deuxième symbole que nous définirons aussi sur Symbol('marque'), et comparons ces valeurs :  
+
+                    ```JS
+                    let sy1 = Symbol('marque');
+                    let sy2 = Symbol('marque');
+                    console.log (sy1 ===  sy2); //false
+                    ```
+
+                    - C’est intéressant, on définit les deux variables sur la même expression, et les deux symboles ne sont pas égaux. Ça confirme bien qu’un symbole à la caractéristique d’être unique.  
+
+                    - Les symboles vont nous permettre de créer des clés de propriétés uniques et non énumérables (ces propriétés ne seront pas répertoriées lorsqu’on parcourra les propriétés d’un objet avec la boucle for/in). C’est un concept peut être un peu complexe à comprendre pour l’instant, mais ne vous inquiétez pas, contentez-vous pour l’instant de retenir que les symboles nous serviront dans la création de clés de propriétés.  
+
+        - ***Type Null***  
+
+            - La valeur null est une valeur primitive représentant simplement l’absence de valeurs. null doit être définie pour indiquer l’absence de valeur. Par exemple, si nous écrivons :  
+
+                ```JS
+                let variable = null;
+                console.log (variable); //null
+                ```
+
+                - La console affiche null. On peut noter un bug si on cherche à afficher le type de variable :  
+
+                    ```JS
+                    let variable = null;
+                    console.log (typeof variable); //object
+                    ```
+                
+                - On peut voir que le type renvoyé n’est pas null mais object. C’est un bug de JavaScript qui existe depuis pas mal de temps, mais qui n’a pas été corrigé visiblement pour des raisons de compatibilité.  
+
+        - ***Type Undefined***
+
+            - À la différence de null, la valeur primitive undefined (définie par le type undefined) est renvoyée par défaut lorsqu’on cherche à récupérer une valeur non définie ou une propriété inexistante. Par exemple, si nous écrivons :  
+
+                ```JS
+                let variable;
+                console.log (variable); //undefined
+                console.log (typeof variable); //undefined
+                ```
+            
+                - Nous pouvons voir que c’est automatiquement ce qui est renvoyé par l’expression variable, cette variable n’étant pas définie. À la différence du type null, nous n’avons pas besoin de définir ma variable sur undefined pour qu’elle renvoie undefined, c’est l’expression renvoyée par défaut par JavaScript.  
+
+##  
+## ***__L'objet JavaScript Number__***  
+
+- ### ***Découverte de l’objet JS Number***  
+
+    - #### ***Découverte de l’objet JS Number***  
+
+        - ***Explication du concept d’objet***  
+
+            - Un objet est une entité qui se caractérise par un type qui le définit, ainsi que des propriétés. C’est exactement le même principe que dans la réalité. Prenons un objet exemple : un ordinateur, plus précisément un ordinateur de la marque HP. Voici les caractéristiques de notre objet :  
+
+                - Type : Ordinateur  
+
+                - Propriétés : Marque = « HP »  
+
+                - Ram = 8  
+
+                - Stockage = 256  
+
+                - Processeur = « Intel »  
+
+                - Démarrage : démarrage de l’ordinateur  
+
+                - Extinction : extinction de l’ordinateur  
+
+            - Nous pouvons constater que notre objet est de type Ordinateur. Il a plusieurs propriétés (appelées aussi attributs) qui correspondent aux différentes informations caractérisant notre objet. Mais nous pouvons voir que les deux dernières propriétés ne sont pas de simples valeurs, ce sont des mécanismes, déclenchables via l’objet (il est possible de démarrer et d’éteindre l’ordinateur).
+
+            - De manière très similaire, nous pouvons dire que les objets ont des propriétés qui peuvent être soit :  
+
+                - Des variables, définies sur une valeur (appelées souvent attributs en POO).  
+
+                - Des fonctions, c’est-à-dire des ensembles d’instructions qu’il est possible d’appeler via notre objet. Ces fonctions (associées à des objets) s’appellent des méthodes.  
+            
+            - Si nous traduisons en code le descriptif de notre ordinateur, nous pouvons l’écrire ainsi :  
+
+                ```JS
+                let ordi1 = new Object(); //nous construisons notre objet
+                ordi1 = {
+                marque: "HP",
+                ram: 8,
+                stockage: 256,
+                processeur: "Intel",
+                demarrage: function() {
+                    console.log("Démarrage de l'ordinateur");
+                },
+                extinction: function() {
+                    console.log("Extinction de l'ordinateur");
+                }
+                }
+                ```
+
+                - Ici, nous pouvons voir que nous créons un objet que nous stockons via la variable ordi1. Ne vous attardez pas pour l’instant sur l’expression new Object(), nous aborderons ce point en temps voulu. Comprenez simplement que cette instruction permet de créer un objet. Puis, nous définissons les propriétés de notre objet parmi lesquelles figurent les attributs (les variables), ainsi que les méthodes demarrage() et extinction(). Nous pouvons voir que pour définir les propriétés, nous utilisons une syntaxe spécifique. Il existe toutefois d’autres moyens de procéder, mais nous ne les verrons pas dans ce cours pour ne pas nous égarer.  
+
+            - Nous pouvons donc accéder aux différentes propriétés de notre objet ordi1, simplement en écrivant ordi1 suivi d’un point « . » et du nom de la propriété.  
+
+                - Prenons un exemple :  
+
+                    ```JS
+                    let ordi1 = new Object(); //nous construisons notre objet
+                    ordi1 = {
+                    marque: "HP",
+                    ram: 8,
+                    stockage: 256,
+                    processeur: "Intel",
+                    demarrage: function() {
+                        console.log("Démarrage de l'ordinateur");
+                    },
+                    extinction: function() {
+                        console.log("Extinction de l'ordinateur");
+                    }
+                    }
+                    console.log(ordi1.marque); //HP
+                    console.log(ordi1.ram); //8
+                    ordi1.demarrage(); //Démarrage de l'ordinateur
+                    ```
+
+                    - Si nous affichons le type de notre objet avec : console.log(typeof ordi1), la console va afficher object et non « Ordinateur ». C’est tout à fait normal, nous avons construit un objet via l’expression new Object(), nous faisons appel au constructeur Object.  
+
+            - Nous verrons rapidement ce qu’est un constructeur dans les paragraphes suivants. Simplement, dans notre exemple, nous n’avons pas défini de sous-type Ordinateur, mais nous avons créé un objet de type Object, ce qui explique le résultat de : console.log(typeof ordi1).
+
+        - ***Introduction à l’objet Number***  
+
+            - Maintenant que nous avons compris globalement ce qu’est un objet, intéressons-nous à l’objet Number. Comme vous le savez, le type primitif Number définit des valeurs primitives immuables. Cependant, par défaut, un objet n’est pas immuable, car il est possible de modifier ses propriétés après l’avoir créé. Mais alors qu’est-ce que l’objet Number ?  
+
+            - Un objet Number est un objet qui enveloppe un type primitif Number. C’est donc un objet constitué de propriétés, c’est un objet muable, mais qui stocke un type primitif Number. Un objet Number permet donc de manipuler des nombres comme des objets. Avant de voir quelques caractéristiques de l’objet Number, voyons comment créer un objet Number.
+
+        - ***Créer un objet Number***  
+
+            - Pour créer un objet Number, il va nous falloir appeler une méthode dont nous avons parlé très brièvement : un constructeur. Les constructeurs sont des méthodes permettant comme leur nom l’indique de construire un objet.  
+
+            - Pour appeler le constructeur de Number, nous pouvons procéder ainsi :  
+
+                ```JS
+                const nombre = new Number(1426.156)
+                console.log(nombre);
+                ```
+
+                - Dans cet exemple, nous créons un objet Number, en appelant le constructeur de Number. Le mot clé new est indispensable. Nous passons comme argument du constructeur le nombre qui sera enveloppé dans notre objet.  
+
+        - ***Les valeurs possibles de Number***  
+
+            - Un objet Number peut représenter des valeurs numériques comprises dans certaines limites. Ces limites sont définies dans des propriétés par défaut de Number. Pour les récupérer, nous pouvons les afficher via le constructeur Number :  
+
+                ```JS
+                console.log(Number.MIN_VALUE);
+                console.log(Number.MAX_VALUE);
+                ```
+
+                - Number.MIN_VALUE est la valeur minimale qu’un objet Number peut contenir. Number.MAX_VALUE est à l’inverse la valeur maximale qu’un objet Number peut contenir.  
+
+        - ***Opérations arithmétiques***  
+
+            - Nous pouvons réaliser sans problème des opérations arithmétiques avec des objets Number. Pourtant, les objets ne sont pas des valeurs primitives numériques. Nous ne pouvons pas normalement réaliser des opérations arithmétiques entre deux objets, mais uniquement entre deux valeurs numériques. Nous verrons en fin de seconde partie comment JavaScript rend possibles les opérations arithmétiques avec comme opérandes des objets Number, comme dans cet exemple :  
+
+                ```JS
+                const a = new Number(18);
+                const b = new Number(17);
+                console.log(a + b); //35
+                console.log (a - b); //1
+                console.log(a * b); //306
+                console.log (a % b); //1
+                ```
+
+                - Il est donc possible de réaliser des opérations arithmétiques très facilement avec les objets Number.
+
+- ### ***Méthodes de Number***  
+
+    - #### ***Méthodes de Number***  
+
+        - ***Types de méthode***  
+
+            - Maintenant que nous comprenons un peu mieux le concept d’objet Number, parlons de quelques-unes de ses méthodes.  
+
+            - Nous pouvons distinguer deux types de méthodes : les méthodes statiques, c’est-à-dire les méthodes que nous pouvons appeler directement via le mot Number, et les méthodes accessibles via les objets créés grâce au constructeur Number. Les objets créés grâce à un constructeur sont appelés des « instances ». Donc, pour faire simple, il existe :  
+
+                - Les méthodes dites « statiques », que nous pouvons appeler directement via le mot Number.  
+
+                - Les méthodes non statiques, que nous pouvons appeler via un objet, c’est-à-dire est une instance de Number.  
+
+            - Les méthodes statiques n’ont donc pas besoin d’instance de Number pour être appelées.
+
+        - ***Les méthodes Number.is…()***  
+
+            - Intéressons-nous à 4 méthodes statiques :  
+
+                - Number.isNaN() : [developer.mozilla.org : Number isNaN()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN)  
+
+                - Number.isFinite() : [developer.mozilla.org : Number/isFinite()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite)  
+
+                - Number.isInteger() : [developer.mozilla.org : Number/isInteger()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger)  
+
+                - Number.isSafeInteger() : [developer.mozilla.org : Number/isSafeInteger()](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger)  
+
+            - Chacune de ses méthodes va renvoyer un booléen. La première va renvoyer true si l’expression passée comme argument n’est pas un nombre. La seconde va renvoyer true si le nombre passé en argument est fini. La troisième va renvoyer true si le nombre est un entier et la quatrième si le nombre est un entier représentable de manière « safe » avec Number.  
+
+            - Voici quelques exemples d’appel de ces méthodes statiques :  
+
+                ```JS
+                console.log(Number.isNaN(62378)); //false
+                console.log(Number.isFinite(5817629)); //true
+                console.log(Number.isInteger(5817629.872)); //false
+                console.log(Number.isSafeInteger(5817629)); //true
+                ```
+
+        - ***L’objet Number.prototype***  
+
+            - Parlons maintenant de méthodes accessibles via des objets créés via le constructeur Number, donc des instances de Number. Ces méthodes ne sont donc pas statiques. Pour bien comprendre, il nous faut nous intéresser rapidement au concept de prototype.  
+
+            - En JavaScript, chaque objet a une propriété appelée prototype. Cette propriété est en fait un objet qui contient les propriétés héritées par chaque instance, par chaque objet de son type. Le prototype est en quelques sortes un modèle pour les instances, c’est-à-dire les objets d’un type. Donc, la propriété Number.prototype est un objet qui contient des propriétés, dont des méthodes accessibles à toutes les instances de Number, ainsi qu’à tous les objets Number.  
+
+            - Il est possible d’afficher les propriétés principales de l’objet Number.prototype en utilisant la méthode Object.getOwnPropertyNames() :  
+
+                ```JS
+                console.log(Object.getOwnPropertyNames(Number.prototype));
+                ```
+
+                - Nous pouvons constater que la console affiche différentes propriétés (qui sont en l’occurrence des méthodes) de l’objet Number.prototype.  
+
+            - Ces méthodes sont donc héritées par toutes les instances de Number. Nous pouvons donc accéder aux méthodes héritées du prototype en écrivant : nomDeLobjet.nomDeLaMethode(), JavaScript fait le reste.
         
+        - ***Les méthodes to…()***  
+
+            - Voyons deux exemples de méthodes :  
+
+                - toExponential()  
+
+                - toString()  
+
+            - La méthode toExponential() permet de renvoyer une chaîne contenant le nombre stocké dans l’objet Number avec une notation exponentielle (avec une puissance). Nous pouvons passer en argument le nombre de chiffres décimaux (chiffres après la virgule). Par défaut, si nous ne passons pas d’arguments, la méthode considérera le nombre de chiffres décimaux nécessaires pour que le nombre soit représenté. Si nous spécifions un argument, nous pouvons nous attendre à ce que le résultat soit un nombre arrondi.  
+
+                - Par exemple :  
+
+                    ```JS
+                    const nombre = new Number(13578);
+                    console.log(nombre.toExponential()); //1.3578e+4
+                    console.log(nombre.toExponential(2)); //1.36e+4
+                    ```
+
+                    - Dans le premier appel de la méthode, aucun argument n’est passé. La méthode utilise le nombre de chiffres décimaux nécessaires pour représenter le nombre avec la notation exponentielle (ici 4 : 3578). Dans le second appel, nous passons comme argument 2. Donc, le résultat contient deux chiffres décimaux : 36. Nous pouvons voir qu’il y a un arrondi, le résultat est donc moins précis.  
+
+            - La méthode toString() permet quant-à-elle de renvoyer une chaîne de caractères contenant la valeur du nombre de l’objet Number.  
+
+                - Prenons un exemple :  
+
+                    ```JS
+                    const nombre = new Number(13578);
+                    let nombreChaine = nombre.toString();
+                    console.log(nombreChaine); //13578
+                    console.log(typeof nombreChaine); //string
+                    ```
+
+                    - Nous pouvons voir que le type de nombreChaine est bien string, c’est une chaîne de caractères.
+
+        - ***La méthode ValueOf***  
+
+            - Dans le dernier exemple, nous avons récupéré la valeur du nombre d’un objet Number en le convertissant en chaîne de caractères. Mais dans certains cas, nous voudrons récupérer la valeur de notre nombre avec le type primitif Number, et non sous la forme d’une chaîne de caractères.  
+
+                - Prenons un exemple. Si nous faisons :     
+
+                    ```JS
+                    const nombre = new Number(13578);
+                    let nombreRecup = nombre;
+                    console.log(nombreRecup); //Number 13578
+                    ```
+                    
+                    - Nous voyons que nombreRecup est une référence vers l’objet, et non vers la valeur de son nombre. nombreRecup est donc un objet, et non une valeur primitive de type Number. En fait, c’est la méthode valueOf() du prototype qui va nous permettre de récupérer la valeur du nombre, avec le type primitif Number.  
+
+                        - Prenons un exemple :  
+
+                            ```JS
+                            const nombre = new Number(13578);
+                            let nombreRecup = nombre.valueOf();
+                            console.log(nombreRecup); //13578
+                            console.log(typeof nombreRecup); //number
+                            ```
+                            
+                            - Donc, avec la méthode valueOf(), nous pouvons récupérer la valeur primitive qui a été enveloppée  dans l’objet Number. La méthode valueOf() va être essentielle à utiliser dans les cas où nous voulons accéder au nombre stocké dans un objet Number.
