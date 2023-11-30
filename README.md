@@ -2333,4 +2333,309 @@
                             console.log(typeof nombreRecup); //number
                             ```
                             
-                            - Donc, avec la méthode valueOf(), nous pouvons récupérer la valeur primitive qui a été enveloppée  dans l’objet Number. La méthode valueOf() va être essentielle à utiliser dans les cas où nous voulons accéder au nombre stocké dans un objet Number.
+                            - Donc, avec la méthode valueOf(), nous pouvons récupérer la valeur primitive qui a été enveloppée  dans l’objet Number. La méthode valueOf() va être essentielle à utiliser dans les cas où nous voulons accéder au nombre stocké dans un objet Number.  
+
+##  
+## ***__Les objets JavaScript String et Array__***  
+
+- ### ***Concepts string et array***  
+  - #### ***Concepts string et array***  
+    - ***Le concept string en JavaScript***  
+
+        - En langage de programmation, le terme « string » (qui signifie « chaîne » en anglais) désigne une séquence de caractères. Les chaînes de caractères sont considérées comme un type de données primitif en programmation. En JavaScript, les chaînes de caractères peuvent être représentées soit sous forme de types de données primitifs, soit sous forme d'objets string.  
+
+        - Toutes les valeurs littérales placées entre des guillemets simples ('), des guillemets doubles (") ou des backticks (`) sont considérées comme des chaînes de caractères primitives en JavaScript.  
+
+        - La distinction entre les chaînes de caractères primitives et les objets string est la suivante : en JavaScript, les chaînes de caractères primitives sont des valeurs simples qui ne possèdent pas de méthodes ou de propriétés associées. En revanche, les objets string sont créés en utilisant le constructeur string (avec ou sans le mot-clé « new »), et ils possèdent des méthodes et des propriétés spécifiques. Comme nous l’avons dit, un objet string permet d’envelopper (« wrapper ») une valeur primitive string. Il permet d'utiliser des méthodes et des propriétés spécifiques des objets sur la valeur primitive enveloppée.  
+
+        - Prenons un exemple pour mieux comprendre:  
+
+            ```JS
+            let str_primi = "mandarine" ;
+            let str_obj = new String(str_primi) ;
+            console.log (typeof str_primi) ;
+            console.log (typeof str_obj) ;
+            ```
+
+            - L'affichage console sera :  
+
+                - String  
+
+                - Object  
+
+            - Explications :  
+
+                - La première ligne crée une variable str_primi contenant une chaîne de caractères primitive « mandarine ». La deuxième ligne crée une variable str_obj qui contient un objet string créé à partir de la variable str_primi.  
+
+                - Les deux dernières lignes utilisent la fonction typeof pour afficher le type de chaque variable dans la console. La première ligne affichera « string », ce qui indique que la variable str_primi contient une chaîne de caractères primitive. La deuxième ligne affichera « object », ce qui indique que la variable str_obj contient un objet string.  
+
+                - Ainsi, l'exemple montre que même si les deux variables contiennent la même chaîne de caractères, l'une est une chaîne de caractères primitive et l'autre est un objet string.  
+
+    - ***Comment utiliser la propriété « length » pour obtenir la longueur d'une chaîne de caractères en JavaScript ?***  
+
+        - Les objets string en JavaScript sont des objets qui possèdent des propriétés et des méthodes qui leur sont propres. Il est important de les connaître pour pouvoir les utiliser efficacement. L'une des propriétés principales d’un objet string est « length ». Cette propriété permet de déterminer la longueur de la chaîne primitive enveloppée en retournant le nombre exact de caractères qu'elle contient. Mais cette propriété est aussi accessible via le type primitif string. En effet, lorsque nous cherchons à accéder à une méthode sur une chaîne de caractères primitive, JavaScript crée un objet temporaire qui enveloppe cette chaîne, afin d’appeler cette méthode. C’est ce principe qui permet d’appeler des méthodes comme length sur des valeurs primitives string.  
+
+        - Il existe deux façons courantes d'utiliser la propriété « length » sur une chaîne de caractères primitive. La première consiste à créer une variable qui contient la chaîne de caractères, par exemple :  
+
+            ```JS
+            let str = 'abcd';
+            ```
+
+            - Ensuite, pour obtenir la longueur de la chaîne, nous utilisons la propriété « length » de cette manière :  
+
+                ```JS
+                console.log(str.length);
+                ```
+        
+        - La deuxième méthode consiste à créer une nouvelle chaîne de caractères directement dans l’argument du console.log, comme ceci :  
+
+            ```JS
+            console.log('efghi'.length);
+            ```
+
+            - Dans cette méthode, la nouvelle chaîne de caractères doit être placée entre guillemets simples.
+
+        - Dans les deux cas, nous obtiendrons respectivement les valeurs quatre et cinq, qui correspondent à la longueur de la chaîne stockée dans la variable str et celle de la nouvelle chaîne créée directement dans l'argument du console.log.  
+
+    - ***Méthodes les plus couramment utilisées pour manipuler les chaînes de caractères***  
+
+        - Une chaîne de caractères en JavaScript possède plusieurs méthodes qui permettent de la manipuler de différentes manières. Il est important de connaître les méthodes les plus couramment utilisées, telles que CharAt(), indexOf(), lastIndexOf(), slice(), split(), etc. Ces méthodes peuvent être utiles pour ajouter ou extraire des éléments d'une chaîne.  
+
+        - D’abord, nous allons voir comment échapper certains caractères. Si nous ne les échappons pas correctement, le navigateur peut confondre ces caractères et cela peut causer des erreurs.  
+
+        - Il vous faut savoir comment les caractères sont positionnés à l'intérieur d'une chaîne de caractères, car cela peut affecter le fonctionnement de certaines méthodes. Nous aborderons cela plus en détail lorsque nous parlerons de la manipulation de l'objet string à l'aide de méthodes.  
+
+        - L’échappement de certains caractères  
+
+            - Des caractères sont reconnus comme une chaîne parce qu’ils sont placés entre des guillemets simples ou entre des guillemets doubles. Si une chaîne est entourée de guillemets simples, il peut y avoir une confusion lorsque nous insérons des apostrophes, par exemple. Pour l’éviter, il est nécessaire de placer le backslash avant cette apostrophe pour l’échapper.  
+
+        - L’échappement de l’apostrophe, des doubles guillemets et des antislashs  
+
+            ```JS
+            let str = 'C\'est un exemple d\'utilisation de l\'échappement de caractères';
+            ```
+
+            - Dans cet exemple, nous avons échappé les apostrophes en les précédant d'un caractère backslash. Cela permet à JavaScript de reconnaître que ces caractères font partie de la chaîne de caractères, et non pas de la syntaxe du langage.
+
+    - ***Comprendre le positionnement des caractères***  
+
+         - Une chaîne de caractères est constituée de n caractères où n représente le nombre de caractères. Chaque caractère dans une chaîne de caractères (string) est associé à une position numérique appelée « index ». L'index du premier caractère dans la chaîne est généralement 0, l'index du deuxième caractère est 1, l'index du troisième caractère est 2, et ainsi de suite. Dans une chaîne de caractères composée de n caractères, le dernier caractère est situé à la position n-1. Par exemple, si la chaîne de caractères contient vingt caractères, alors le dernier caractère est situé à la position 19. En effet, les chaînes de caractères sont construites comme des tableaux composées de différents caractères, avec un index pour chaque caractère.  
+
+            - Comprendre le positionnement des caractères  
+
+                ```JS
+                const str = "iuhzefpj";
+                console.log(str[0]); //i
+                console.log(str[3]); //z
+                ```
+
+                - En fin de compte, nous avons appris qu'une chaîne de caractères (string) est composée d'une séquence de caractères dont nous pouvons déterminer la longueur et la position individuelle. Il est important de veiller à bien échapper les caractères spéciaux afin d'éviter toute confusion pour le navigateur.  
+
+    - ***Distinction entre chaînes primitives et objets string en JavaScript***  
+
+        - Il est essentiel de distinguer les objets string des valeurs primitives string. Les valeurs littérales entre guillemets simples, doubles ou backticks sont des chaînes primitives. Cependant, les objets string permettent d’envelopper des valeurs primitives de type string dans un objet. Comme nous l’avons vu précédemment, lorsque nous utilisons une propriété comme length avec une valeur primitive string, JavaScript crée automatiquement un objet temporaire string qui enveloppe la valeur primitive pour donner accès à la propriété appelée. Mais nous pouvons aussi directement créer un objet string qui enveloppe une chaîne de caractères primitive afin d’accéder constamment aux propriétés et méthodes de string. Pour cela, il va falloir appeler le constructeur string.  
+
+            - Chaînes primitives et d'objets string :  
+
+                ```JS
+                let str1 = "Chaîne de caractères primitive entre doubles quotes" 
+                let str2 = 'Chaîne de caractères primitive entre simples quotes';
+                let str3 = `Chaîne de caractères primitive entre backticks`;
+                let str4 = new String("Chaîne de caractères"); //objet String
+                ```  
+
+                - Dans de nombreux cas, les valeurs primitives et les objets chaînes de caractères peuvent être utilisés de manière interchangeable. Les valeurs littérales pour les chaînes sont indiquées par des guillemets simples, doubles ou des backticks. Les backticks permettent de définir des littéraux de gabarits de chaînes pour interpoler des expressions à l'intérieur d'une chaîne.
+
+    - ***Comprendre les tableaux en JavaScript***  
+
+        - En JavaScript, les tableaux (array) sont une structure de données spéciale qui nous permet de stocker des collections ordonnées de valeurs. À la différence des chaînes, il n'existe pas de type primitif array. Les array sont des objets. Ils sont indispensables lorsque nous avons besoin de stocker une liste d'éléments, tels que des noms d'utilisateurs. Les tableaux nous permettent de conserver l'ordre des éléments et de les manipuler facilement.  
+
+        - Pour créer un tableau en JavaScript, nous pouvons utiliser des crochets et nous séparons les éléments par des virgules. Par exemple, si nous voulons stocker une liste de noms d'utilisateurs, nous pouvons écrire :  
+
+            - Les éléments d’un tableau :  
+
+                ```JS
+                let utilisateurs = ['John', 'Peter', 'Chris'] ;
+                ```
+
+                - Dans cet exemple, la variable utilisateurs contient un tableau avec trois éléments : « John », « Peter » et « Chris ». Nous pouvons accéder aux éléments du tableau en utilisant leur position dans le tableau, également appelée « index ». Par exemple, pour accéder au deuxième élément (qui est « Peter »), nous pouvons utiliser l'index 1 :  
+
+                    ```JS
+                    console.log(utilisateurs[1]); // affiche "Peter"
+                    ```
+
+        - Il est aussi possible d’appeler le constructeur array pour construire un tableau :  
+
+            ```JS
+            let utilisateurs = new Array('John', 'Peter', 'Chris');
+            ```
+
+            - Notre tableau est un objet qui contient plusieurs valeurs entre crochets séparées par des virgules. Les objets array peuvent être stockés via des variables. L’intérêt des array est que nous pouvons utiliser individuellement chacune de ces valeurs. Sans tableau, chaque valeur doit être attribuée à une variable, ce qui peut être fastidieux si nous en avons des centaines. De plus, nous pouvons utiliser une boucle pour parcourir plusieurs valeurs d’un tableau stockées dans une même variable.  
+
+            - Les tableaux seront donc utiles lorsque nous stockerons plusieurs données ordonnées via un même objet.
+
+    - ***Propriétés et méthodes utiles pour manipuler des tableaux en JavaScript***  
+
+        - Il est important de connaître ces méthodes de array, car elles nous permettent d'ajouter, de supprimer, de trier et de manipuler les éléments du tableau de manière efficace.  
+
+        - Parmi les méthodes les plus couramment utilisées, on peut citer concat(), join(), pop(), push(), shift(), unshift(), slice(), splice() et reverse(). Chacune de ces méthodes peut être utilisée pour résoudre des problèmes spécifiques en matière de manipulation de tableaux.  
+
+        - Pour avoir une idée de la syntaxe, voici comment procéder :  
+
+            ```JS
+            let tableau = ['a', 'b', 'c'];
+            let autreTableau = tableau.push('d', 'e');
+            console.log(autreTableau);
+            console.log(tableau);
+            ```
+
+            - Ce code crée un tableau appelé « tableau » contenant les valeurs 'a', 'b' et 'c'. Ensuite, il crée un autre tableau appelé « autreTableau » en utilisant la méthode push() qui ajoute les valeurs 'd' et 'e' à la fin du tableau « tableau ». La méthode push() renvoie également la nouvelle longueur du tableau, qui est stockée dans la variable autreTableau.  
+
+            - Ensuite, le code utilise la fonction console.log pour afficher les deux tableaux dans la console du navigateur ou de l'éditeur de code. La première ligne de code affiche la nouvelle longueur du tableau « autreTableau » (qui est maintenant 5), tandis que la deuxième ligne affiche le tableau « tableau » mis à jour, qui contient maintenant les valeurs 'a', 'b', 'c', 'd' et 'e'.
+
+- ### ***Manipulation des chaînes de caractères (strings) et des tableaux (arrays)***  
+
+  - #### ***Manipulation des chaînes de caractères (strings) et des tableaux (arrays)***  
+
+    - ***Manipulation des chaînes de caractères***  
+
+        - Dans cette seconde partie, un accent particulier sera mis sur les manipulations des objets string et array. Pour cela, nous allons insister sur l’association variable et propriété ou méthode afin d’effectuer certaines actions avec nos données. Il est donc nécessaire d'en savoir davantage sur les propriétés et méthodes de deux types de données.  
+
+        - Les objets string sont utilisés pour représenter et manipuler des chaînes de caractères, qui sont utiles pour stocker des données sous forme de texte. Plusieurs opérations courantes sont disponibles pour manipuler les chaînes de caractères, telles que vérifier la longueur avec length, concaténer avec les opérateurs + et +=, rechercher des sous-chaînes avec les méthodes includes() ou indexOf(), et extraire des sous-chaînes avec la méthode substring().  
+
+        - Nous allons examiner deux méthodes : la méthode slice() et la méthode split() pour respectivement extraire une sous-chaîne ou découper une chaîne en sous-chaînes.  
+
+            - Extraction d’une sous-chaîne d’une chaîne et découpage d’une chaîne en sous-chaînes  
+
+                ```JS
+                let historique = new String("(réf : 775533) commandé le 25/03/2020 10 sacs riz");
+                console.log(historique.slice(7, 13));
+                console.log(historique.split(""));
+                ```
+
+                - Nous stockons une chaîne dans un objet string. Puis, nous faisons un alert avec comme argument la méthode slice(7, 13) de notre objet historique. Il nous est renvoyé une sous-chaîne extraite entre les index 7 ( compris) et 13 (non compris), soit 775533. Quant à la méthode split(""), rien qu’avec les simples quotes, elle va découper notre chaîne de caractères en sous-chaînes et tout mettre dans un tableau de 49 caractères. Elle considère le caractère passé comme caractère séparateur.  
+
+        - D’autres tests de manipulation de l’objet string  
+
+            - Nous allons nous entraîner à concaténer et à manipuler un string avec les méthodes courantes telles que charAt() ou indexof().  
+
+                ```JS
+                let concat = 'Hello ' + ' World !';
+                console.log(concat) ;
+                let nom = "Paul";
+                let age = 44;
+                console.log('Je m\’appelle ' + nom + ', et j\’ai ' + age + ' ans.');
+                ```
+                
+                - Dans ces deux exemples, nous avons utilisé l’opérateur « + » pour concaténer nos chaînes de caractères.  
+
+        - Utilisons maintenant la méthode charAt() pour comprendre son fonctionnement. La méthode charAt() permet de renvoyer le caractère d’une chaîne pour l’index passé comme argument.
+
+            ```JS
+            let chaine = new String('Comment ça fonctionne ?');
+            let index = 4;
+            console.log(`Le caractère à l’index ${index} est ${chaine.charAt(index)}`);
+            ```
+
+            - Nous avons fait un console.log et entre parenthèses nous avons utilisé entre les backticks, une chaîne de caractères et l’interpolation pour insérer les variables. Nous écrivons le symbole dollar avec des accolades, ${} à l’intérieur desquels nous plaçons nos expressions. La première fois, nous avons simplement interpolé la variable index. Mais la deuxième fois, nous interpolons la valeur de retour de la méthode charAt() de l’objet chaîne puis nous passons la variable index comme argument. Au final, nous est renvoyée la phrase : le caractère à l’index 4 est e. La manipulation a réussi. Parlons maintenant de la méthode indexOf().  
+
+                ```JS
+                let chaine1 = 'Le renard brun et rapide saute par-dessus le chien endormi.';
+                let chaine2 = 'chien';
+                let chaine3 = chaine1.indexOf(chaine2) ;
+                console.log(`l’index du ${chaine2} à partir du commencement est ${chaine3}`);
+                ```
+
+                - L’indexOf() nous aide à trouver la position d’une sous-chaîne dans une chaîne de caractères. Dans cet exemple, nous ne créons pas d’objet string, mais c’est JavaScript qui créera un objet string temporaire lors de l’appel de la méthode indexOf().
+
+                - Notre première variable chaine1 contient une chaîne de caractères entre des guillemets. La deuxième variable chaine2 stocke une autre chaîne contenant « chien ». Quel est l’index du mot chien dans la première variable ? Nous avons créé une troisième variable chaine3 et l’avons défini sur la valeur de retour de chaine1.indexOf(chaine2). Pour terminer par un console.log, entre parenthèses nous avons mis le backticks du texte avec l’interpolation de chaine2 puis une autre interpolation avec chaine3. Voilà ce que cela a donné : l’index du ‘chien’ à partir du commencement est 45. La méthode indexOf() permet donc de connaître l’index d’une sous-chaîne dans une chaîne de caractères.
+
+    - ***La manipulation d’un tableau par ses propriétés et méthodes***  
+
+        - Pour connaître le nombre d'éléments d'un tableau, tout comme pour une chaîne de caractères, nous utilisons la propriété length. Cette propriété est de type entier et nous indique le nombre d'éléments présents dans un tableau.  
+
+        - Les développeurs ont souvent recours aux boucles pour parcourir les éléments d'un tableau. Par exemple, la boucle for est très courante. Ainsi, si la propriété length nous aide à déterminer la taille d'un tableau, la boucle for est un outil plus pratique pour récupérer la liste de tous les éléments du tableau.  
+
+        - L’exemple ci-dessus nous sert d’illustration :  (La propriété length est utilisée dans la boucle for)  
+
+            ```JS
+            let chiffre = ['un', 'deux', 'trois', 'quatre', 'quinze'];
+            for (let element of chiffre) {
+            console.log(element);
+            }
+            ```
+            
+            - Nous utilisons le mot clé « of » pour parcourir chaque valeur du tableau.  
+        
+        - L’ajout et la suppression d’un élément par les méthodes push() et pop()
+
+             - Pour ajouter ou supprimer un élément, nous pouvons utiliser push() et pop(). Pour cela, nous allons créer un tableau et lui appliquer ces deux méthodes.  
+
+                ```JS
+                let monTableau = ['Paris', 'Marseille', 'Lyon', 'Bordeaux', 'Toulouse'];
+                monTableau.push('Lille', 'Strasbourg');
+                monTableau.pop();
+                console.log (monTableau);
+                ```  
+
+                - Nous pouvons voir que push() permet d’ajouter des éléments tandis que pop() supprime le dernier élément.  
+
+        - Utiliser les méthodes shift() et unshift()  
+
+            ```JS
+            let nombres = [1, 2, 3, 4];
+            nombres.shift();
+            console.log(nombres); //2,3,4
+            nombres.unshift(0);
+            console.log(nombres);//0,2,3,4
+            ```
+
+            - Le principe est assez simple, unshift() permet de rajouter un élément au début du tableau tandis que shift() supprime le premier élément du tableau.  
+
+        - Autres manipulations possibles avec les méthodes split(), length, toString()  
+
+            - Il existe de nombreuses autres méthodes pour manipuler les tableaux en JS. En voici quelques-unes :  
+
+                ```JS
+                // Crée une chaîne de caractères contenant les noms des villes séparées par des virgules
+                let mesDonnees = 'Paris, Londres, Berlin, Rome, Madrid';
+
+                // Utilise la méthode split() pour transformer la chaîne en un tableau en se basant sur le séparateur (la virgule suivie d'un espace)
+                let monTableau = mesDonnees.split(', ');
+                
+                // Affiche la longueur du tableau (le nombre d'éléments)
+                console.log(monTableau.length);
+                
+                // Affiche la chaîne de caractères initiale (mesDonnees)
+                console.log(mesDonnees);
+                
+                // Affiche le tableau créé à partir de la chaîne de caractères (monTableau)
+                console.log(monTableau);
+                
+                // Affiche le premier élément du tableau (l'index 0)
+                console.log(monTableau[0]);
+                
+                // Affiche le dernier élément du tableau (l'index égal à la longueur du tableau moins 1)
+                console.log(monTableau[monTableau.length - 1]);
+                
+                // Utilise la méthode join() pour fusionner les éléments du tableau en une nouvelle chaîne de caractères (myNewString)
+                let myNewString = monTableau.join(', ');
+                console.log(myNewString);
+                
+                // Crée un tableau contenant les noms des joueurs
+                let nomsDesJoueurs = ["Neymar", "Kylian", "Cristiano", "Lionel"];
+                
+                // Utilise la méthode toString() pour convertir le tableau des noms des joueurs en une chaîne de caractères
+                console.log(nomsDesJoueurs.toString());
+                ```  
+        
+        - Tableau multidimensionnel  
+
+            - Un tableau multidimensionnel est un tableau qui, comme son nom l’indique, a plusieurs dimensions, par exemple, l’axe des colonnes et l’axe des lignes. Créons un tableau multidimensionnel.  
+
+                ```JS
+                let voitures = [["Peugeot", "208"], ["Renault", "Clio"]];
+                console.log(voitures[1][0]); //"Renault"
+                ```  
+
+                - Dans cet exemple, nous créons un tableau à deux dimensions. Les crochets imbriqués représentent des lignes. Nous avons dans cet exemple deux lignes et deux colonnes. Nous cherchons à accéder à l’index 1 de notre tableau, qui correspond à ["Renault", "Clio"]. Puis nous cherchons à récupérer l’index 0 de ["Renault", "Clio"], qui est donc la valeur « Renault ».
