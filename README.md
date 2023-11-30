@@ -1671,3 +1671,246 @@
                 - Le console.log("fini") est donc exécuté et la console affiche cette chaîne.  
 
                 - Voilà, c’est un exemple assez basique, mais on peut voir que les instructions break et continue vont permettre de rajouter du potentiel aux boucles. Bien évidemment, ces mots clés peuvent être utilisés avec la boucle for.
+
+##  
+## ***__Les fonctions en JS__***  
+
+- ### ***Utilisation et définition de fonctions***  
+
+  - #### ***Utilisation et définition de fonctions***  
+
+    - ***Fonctions prédéfinies***  
+
+        - En JavaScript et en général dans tous les langages de programmation, il existe des fonctions prédéfinies. Il existe plusieurs fonctions natives, que l’on peut appeler n’importe où dans un code JS. Par exemple la fonction eval(). Elle permet d’évaluer un script JavaScript contenu dans une chaîne de caractères. Par exemple, si nous écrivons un script dans une chaîne :  
+
+            ```JS
+            // "const nombre = 15; console.log(nombre * 2) ;"
+            ```
+
+        - Nous pouvons appeler la fonction eval() en indiquant dans les parenthèses la chaîne :  
+
+            ```JS
+            // eval("const nombre = 15; console.log(nombre * 2);")
+            ```
+        
+        - Nous pouvons voir qu’avec cette fonction, le code inscrit dans la chaîne est évalué et donc exécuté. La console affiche 30. C’est un exemple tout simple de fonction native. On trouve une liste des fonctions natives sur la documentation Mozilla à l’adresse : developer.mozilla.org dans la partie « Fonctions Prédéfinies ». Mais intéressons-nous à la définition de « fonctions personnalisées ».  
+
+    - ***Syntaxe de la définition de fonctions***  
+
+        - Pour définir des fonctions en JavaScript, il faut respecter cette syntaxe :  
+
+            ```JS
+            function nomDeLaFonction(paramètres) {
+                instructions;
+            }```
+
+        - On utilise le mot clé ***function*** pour définir une fonction. Les paramètres (dans le cas où il y en a) sont déclarés dans les parenthèses, et les instructions sont définies dans les accolades. Mais comment appeler notre fonction, afin d’exécuter les instructions qu’elle contient ?
+
+    - ***Syntaxe de l’appel d’une fonction***  
+
+        - Pour appeler une fonction en JavaScript, on peut utiliser la syntaxe :  
+
+            ```JS
+            // nomDeLaFonction(paramètres);
+            ```
+
+    - ***Première définition d’une fonction***  
+
+        - Nous souhaitons créer une fonction qui calcule le double d’un nombre et qui l’affiche dans une chaîne de caractères. Nous définissons une fonction que nous appellerons calcDouble() :  
+
+            ```JS
+            const nombre = 100;
+            function calcDouble() {
+                let double = nombre * 2;
+                console.log("Le double du nombre " + nombre + " est " + double);
+            }
+            ```
+
+        - Nous définissons donc la fonction calcDouble. Mais si nous exécutons ce code, il ne se passe pas grand-chose. Il faut que nous appelions notre fonction pour que ses instructions soient exécutées :  
+
+            ```JS
+            const nombre = 100;
+            function calcDouble() {
+                let double = nombre * 2;
+                console.log("Le double du nombre " + nombre + " est " + double);
+                }
+            
+            calcDouble(); // Appel de la fonction
+            ```
+
+        - Nous pouvons voir que ça fonctionne, la console affiche : "Le double du nombre 100 est 200". Maintenant, admettons que nous changions la valeur de la variable nombre (nous changeons le const en let) et que nous la définissions sur 40 par exemple. Nous voulons à nouveau calculer le double de nombre. Mais est-ce que nous avons besoin de réécrire les instructions permettant de calculer le double de nombre ? Non, nous n’avons qu’à appeler à nouveau la fonction calcDouble() :  
+
+            ```JS
+            let nombre = 100;
+            function calcDouble() {
+                let double = nombre * 2;
+                console.log("Le double du nombre " + nombre + " est " + double);
+            }
+
+            calcDouble();
+            nombre = 40;
+            calcDouble();
+            ```
+
+            - Nous pouvons voir que ça fonctionne, la console affiche :  
+
+                - Le double du nombre 100 est 200  
+                - Le double du nombre 40 est 80  
+
+        - Nous pouvons donc appeler autant de fois que nécessaire la fonction calcDouble(), sans avoir à écrire à chaque fois les mêmes instructions.
+
+- ### ***Paramètres, valeur de retour et expressions de fonctions***  
+
+  - #### ***Paramètres, valeur de retour et expressions de fonctions***  
+
+    - ***Paramètres***  
+
+        - Qu’est-ce qu’un paramètre ? C’est un nom, on peut dire une variable qui est indiquée dans les parenthèses de la fonction. L’intérêt d’un paramètre est qu’il permet d’importer un argument dans une fonction, c’est-à-dire une valeur précise qui sera définie lors de l’appel de la fonction. Pour faire simple, lorsqu’on a un paramètre d’une fonction, on va pouvoir définir sa valeur lors de l’appel de la fonction. On pourra donc définir une valeur différente à chaque appel. Reprenons l’exemple que nous avons pris précédemment :  
+
+            ```JS
+            let nombre = 100;
+            function calcDouble() {
+                let double = nombre * 2;
+                console.log("Le double du nombre " + nombre + " est " + double);
+            }
+            calcDouble();
+            nombre = 40;
+            calcDouble();
+            ```  
+        - Admettons que dans cet exemple, on veuille calculer le double d’un nombre passé en paramètre. Ça nous évitera d’avoir à déclarer hors de la fonction une variable nombre et d’avoir à changer sa valeur à chaque fois. Donc si on enlève cette variable, on obtient :  
+
+            ```JS
+            function calcDouble(?) {
+                let double = ? * 2;
+                console.log("Le double du nombre " + ? + " est " + double);
+            }
+            calcDouble(?);
+            calcDouble(?);
+            ```  
+            - On a placé des points d’interrogation pour indiquer les emplacements où il manque une valeur. Comment faire pour initialiser un paramètre qui stockera la valeur d’un nombre ? Prenons un exemple mathématique :  
+
+                - f(x) = x * 2  
+
+            - Ici, nous avons une fonction mathématique. On peut voir que x est un paramètre de la fonction. Si on calcule f(4), alors tous les x prennent la valeur 4 :  
+
+                - f(4) = 4 * 2  
+
+        - C’est le même principe pour les fonctions en programmation. On va initialiser un paramètre qu’on va par exemple appeler nb. On pourrait l’appeler x ou a, bref, lui donner n’importe quel nom. Puis lors de l’appel, on spécifie l’argument, c’est-à-dire la valeur que va prendre le paramètre nb :
+
+            ```JS
+            function calcDouble(nb) {
+                let double = nb * 2;
+                console.log("Le double du nombre " + nb + " est " + double);
+            }
+            calcDouble(100); //Le double du nombre 100 est 200
+            calcDouble(40); //Le double du nombre 40 est 80
+            ```
+        
+        - Nous pouvons voir que ça fonctionne et que nous pouvons appeler la fonction un nombre de fois illimité en passant en paramètre le nombre pour lequel le double sera calculé. Lorsque nous définissons une fonction, nous pouvons passer plusieurs paramètres. Par exemple, définissons une fonction permettant de calculer le périmètre d’un rectangle :  
+
+            ```JS
+            function perimetreRectangle(largeur, longueur) {
+                let perimetre = 2 * largeur + 2 * longueur;
+                console.log("Le perimetre du rectangle est de " + perimetre + " cm2");
+            }
+            ```  
+        - Quand nous appelons notre fonction, il suffit de spécifier les arguments, donc les valeurs correspondant à la largeur et à la longueur, dans l’ordre correspondant au passage des paramètres :  
+
+            ```JS
+            function perimetreRectangle(largeur, longueur) {
+                let perimetre = 2 * largeur + 2 * longueur;
+                console.log("Le perimetre du rectangle est de " + perimetre + " cm2");
+            }
+
+            perimetreRectangle(4, 5);
+            perimetreRectangle(2, 4);
+            perimetreRectangle(1, 2);
+            perimetreRectangle(18, 20);
+            ```
+            - Nous pouvons voir que les différents appels de la fonction permettent d’afficher le périmètre d’un rectangle de largeur 4 et longueur 5, de largeur 2 et longueur 4, etc.
+
+        - Qu’est-ce qu’une valeur de retour ? Vous vous en rappelez, tout à l’heure nous avons pris un exemple d’une fonction mathématique :  
+
+            - f(x) = x * 2  
+
+        - Dans ce cas, il y a un paramètre spécifié qui est x. Mais à quoi peut correspondre la valeur de retour ? On peut dire que la valeur de retour de cette fonction est f(x). Dans le cas où x = 4, on a :  
+
+            - f(4) = 4 * 2 = 8  
+
+                - Dans le cas où x = 4, la valeur de retour de la fonction sera donc 8.  
+
+                - La valeur de retour de la fonction est donc x * 2.  
+
+        - Jusque-là, nous n’avons pas défini de valeur de retour. Mais on pourrait se demander : est-ce que les fonctions que nous avons définies ont une valeur de retour ? La valeur de retour d’une fonction est renvoyée par l’expression permettant d’appeler une fonction. Par exemple, la valeur de retour de perimetreRectangle(4, 5) est renvoyée par l’expression perimetreRectangle(4, 5).  
+
+        - Voyons donc si notre fonction a une valeur de retour en faisant un console.log de l’expression perimetreRectangle(4, 5).  
+
+            ```JS
+            function perimetreRectangle(largeur, longueur) {
+                let perimetre = 2 * largeur + 2 * longueur;
+                console.log("Le perimetre du rectangle est de " + perimetre + " cm2");
+            }
+            console.log(perimetreRectangle(4, 5));
+            ```
+            - On peut voir que la fonction est appelée, mais qu’elle renvoie (ou « que sa valeur de retour est ») undefined. Notre fonction n’a donc pas de valeur de retour explicite, c’est une fonction que l’on peut qualifier « de procédure ». Mais imaginons qu’on veuille que la valeur de retour de notre fonction soit justement le périmètre de notre rectangle. Ce serait plus logique puisque c’est la valeur que l’on cherche à obtenir avec la fonction perimetreRectangle(). On peut (bien que ce ne soit pas obligatoire) retirer le console.log affichant la chaîne de caractères avec le périmètre. Pour définir la valeur de retour d’une fonction, on utilise le mot clé return :  
+
+                ```JS
+                function perimetreRectangle(largeur, longueur) {
+                let perimetre = 2 * largeur + 2 * longueur;
+                return perimetre;
+                }
+                console.log(perimetreRectangle(4, 5));
+                ```
+
+        - Dans ce dernier exemple, la fonction perimetreRectangle() a pour valeur de retour la valeur de la variable  perimetre.  
+
+        - L’expression perimetreRectangle(4, 5) va donc renvoyer 2 * 4 + 2 * 5, donc 18. Comme on affiche perimetreRectangle(4, 5) dans la console, la console affiche 18. On peut tester la fonction avec de nombreux arguments comme suit :  
+
+            ```JS
+            function perimetreRectangle(largeur, longueur) {
+            let perimetre = 2 * largeur + 2 * longueur;
+            return perimetre;
+            }
+            console.log(perimetreRectangle(4, 5)); //18
+            console.log(perimetreRectangle(8, 5)); //26
+            console.log(perimetreRectangle(4.4, 1.67)); //12.14
+            console.log(perimetreRectangle(64, 45)); //218
+            ```
+
+    - ***Utilisation du mot clé return***  
+
+        - Le mot clé return met fin à l’exécution de la fonction et définit la valeur de retour.  
+
+        - Voilà, vous savez maintenant utiliser le mot clé return pour renvoyer une valeur. À noter qu’en règle générale, il est préconisé de définir dans une fonction, une valeur de retour. Tous les exemples que nous avons pu voir dans la première partie ne sont donc pas forcément préconisés. Maintenant que vous savez définir une valeur de retour, prenez donc l’habitude d’utiliser le mot clé return dans vos fonctions.  
+
+    - ***Créer une fonction grâce à une expression de fonction***  
+
+        - Dans tous les exemples de ce cours, nous avons déclaré des fonctions en utilisant une instruction (d’un point de vue syntaxique). Mais il est aussi possible de créer une fonction en passant par une expression. Une expression est une unité de code qui renvoie une valeur. Par exemple, l’expression suivante renvoie 4.  
+
+            - 2 * 2  
+
+        - On peut affecter la valeur renvoyée par cette expression à une variable par exemple :  
+
+            ```JS
+            let a = 2 * 2 ; 
+            ```
+        
+        - Mais comment créer une fonction via une expression ? Voici un exemple tout simple :  
+
+        ```JS
+        let racine = function racineCarree (nombre) {return Math.sqrt(nombre);};
+        ```
+
+    - Nous pouvons voir que nous affectons à la variable racine l’expression de notre fonction racineCarree(). Cette fonction a simplement pour objectif de renvoyer la racine du nombre passé en paramètre, grâce au Math.sqrt(). Dans ce cas, nous créons la fonction grâce à une expression de fonction. Mais nous pouvons aussi grâce à ce système créer une fonction anonyme, c’est-à-dire une fonction qui n’a pas de nom :  
+
+        ```JS
+        let racine = function (nombre) {return Math.sqrt(nombre);};
+        ```
+    
+    - Dans les deux cas, nous pouvons appeler notre fonction en passant par la variable racine. Par exemple :  
+
+        ```JS
+        console.log(racine(9));
+        ```
+        - La console affiche donc 3.
+        
