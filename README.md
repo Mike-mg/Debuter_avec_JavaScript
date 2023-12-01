@@ -1047,13 +1047,13 @@
 
                 - En revanche, on peut voir que, si on définit nombre sur 10 par exemple :  
 
-                ```JS
-                const nombre = 10;
-                if (nombre > 10) {
-                    console.log("Le nombre " + nombre + " est plus grand que 10");
-                }
-                ```
-                - Étant donné que nombre n’est pas strictement supérieur à 10, alors l’expression nombre > 10 va renvoyer false. Donc l’instruction console.log("Le nombre " + nombre + " est plus grand que 10"); ne sera pas exécutée. La console n’affichera rien dans ce cas. On peut voir qu’on peut insérer plusieurs lignes de codes qui seront exécutées si la condition renvoie true.
+                    ```JS
+                    const nombre = 10;
+                    if (nombre > 10) {
+                        console.log("Le nombre " + nombre + " est plus grand que 10");
+                    }
+                    ```
+                    - Étant donné que nombre n’est pas strictement supérieur à 10, alors l’expression nombre > 10 va renvoyer false. Donc l’instruction console.log("Le nombre " + nombre + " est plus grand que 10"); ne sera pas exécutée. La console n’affichera rien dans ce cas. On peut voir qu’on peut insérer plusieurs lignes de codes qui seront exécutées si la condition renvoie true.
 
             - Prenons un autre exemple :  
 
@@ -1449,19 +1449,19 @@
             
             - Pourquoi ? Tout simplement parce que mon tableau a 3 propriétés correspondant aux index des éléments qui le composent. En ce sens, cela pourrait être intéressant d’utiliser ce système pour afficher la valeur des éléments de notre tableau comme ceci :
 
-            ```JS
-            let tableau = ["Apple", "HP", "Acer"];
-            for (let i in tableau) {
-                console.log(tableau[i]);
-            }
-            ```
-            - Effectivement, cela fonctionne, la console affiche chaque valeur du tableau. 
-            
-            - Cependant, il n’est pas préconisé de procéder ainsi pour récupérer les valeurs d’un tableau.  
-            
-            - Pourquoi ? Tout bonnement parce que le ***in*** permet de parcourir les propriétés du tableau. Si l’on ajoute des propriétés à notre tableau (qui ne sont pas nécessairement des éléments du tableau), alors la boucle for les parcourra aussi, ce qui posera un problème (puisqu’on aura les éléments du tableau et les autres propriétés).  
-            
-            - En ce sens, quand on veut parcourir un tableau, il est important d’utiliser le système ***for/of***.  
+                ```JS
+                let tableau = ["Apple", "HP", "Acer"];
+                for (let i in tableau) {
+                    console.log(tableau[i]);
+                }
+                ```
+                - Effectivement, cela fonctionne, la console affiche chaque valeur du tableau. 
+                
+                - Cependant, il n’est pas préconisé de procéder ainsi pour récupérer les valeurs d’un tableau.  
+                
+                - Pourquoi ? Tout bonnement parce que le ***in*** permet de parcourir les propriétés du tableau. Si l’on ajoute des propriétés à notre tableau (qui ne sont pas nécessairement des éléments du tableau), alors la boucle for les parcourra aussi, ce qui posera un problème (puisqu’on aura les éléments du tableau et les autres propriétés).  
+                
+                - En ce sens, quand on veut parcourir un tableau, il est important d’utiliser le système ***for/of***.  
 
   - #### ***Utiliser for/of***  
 
@@ -1514,50 +1514,50 @@
 
         - On voit que le système de while est assez simple à comprendre. Prenons un exemple simple :  
 
-        ```JS
-        let nombre = 1;
-        while (nombre <= 10) {
-            console.log ("Le nombre est : " + nombre);
-            nombre += 2;
-            nombre -=0.5;
-        }
-        console.log (nombre)
-        ```
-        - Ici, nous définissons une variable nombre sur la valeur de 1.  
-        
-        - Puis, dans le while, nous passons en paramètre l’expression conditionnelle nombre <= 10. 
-        
-        - Tant que nombre sera inférieure ou égale à 10, alors la boucle continuera de s’exécuter.  
-        
-        - On peut voir que dans les instructions, on commence par afficher le nombre dans une chaîne concaténée, puis on lui ajoute 2 et on lui retire 0,5.  
-        
-        - Cet ensemble d’instructions sera exécuté à chaque itération. Toutefois, en quel sens peut-on dire que le nombre d’itérations n’est pas fixé avant la première itération ?
-
-            - Si on regarde la boucle, on peut voir que, hors instructions (c’est-à-dire hors du corps de la boucle), le nombre d’itérations est inconnu.  
+            ```JS
+            let nombre = 1;
+            while (nombre <= 10) {
+                console.log ("Le nombre est : " + nombre);
+                nombre += 2;
+                nombre -=0.5;
+            }
+            console.log (nombre)
+            ```
+            - Ici, nous définissons une variable nombre sur la valeur de 1.  
             
-            - Ce sont, dans cet exemple, les instructions de la boucle qui permettent de déterminer le nombre d’itérations en fonction de la condition (car on modifie la variable nombre dans les instructions du while, tandis que la condition porte sur cette même variable nombre).  
+            - Puis, dans le while, nous passons en paramètre l’expression conditionnelle nombre <= 10. 
             
-            - Dans ce cas, il est donc judicieux d’utiliser la boucle while. À la différence, quand nous utilisons la boucle for, le nombre d’itérations est fixé dans les paramètres de la boucle (sauf si on ajoute des instructions de type break ou continue que nous aborderons).  
+            - Tant que nombre sera inférieure ou égale à 10, alors la boucle continuera de s’exécuter.  
             
-            - Pour notre while, la console affichera donc :  
+            - On peut voir que dans les instructions, on commence par afficher le nombre dans une chaîne concaténée, puis on lui ajoute 2 et on lui retire 0,5.  
+            
+            - Cet ensemble d’instructions sera exécuté à chaque itération. Toutefois, en quel sens peut-on dire que le nombre d’itérations n’est pas fixé avant la première itération ?
 
-                1. Le nombre est : 1
+                - Si on regarde la boucle, on peut voir que, hors instructions (c’est-à-dire hors du corps de la boucle), le nombre d’itérations est inconnu.  
+                
+                - Ce sont, dans cet exemple, les instructions de la boucle qui permettent de déterminer le nombre d’itérations en fonction de la condition (car on modifie la variable nombre dans les instructions du while, tandis que la condition porte sur cette même variable nombre).  
+                
+                - Dans ce cas, il est donc judicieux d’utiliser la boucle while. À la différence, quand nous utilisons la boucle for, le nombre d’itérations est fixé dans les paramètres de la boucle (sauf si on ajoute des instructions de type break ou continue que nous aborderons).  
+                
+                - Pour notre while, la console affichera donc :  
 
-                1. Le nombre est : 2.5
+                    1. Le nombre est : 1
 
-                1. Le nombre est : 4
+                    1. Le nombre est : 2.5
 
-                1. Le nombre est : 5.5
+                    1. Le nombre est : 4
 
-                1. Le nombre est : 7
+                    1. Le nombre est : 5.5
 
-                1. Le nombre est : 8.5
+                    1. Le nombre est : 7
 
-                1. Le nombre est : 10
+                    1. Le nombre est : 8.5
 
-                1. 11.5
+                    1. Le nombre est : 10
 
-                     - On peut voir qu’après la 7e itération, le programme vérifie la valeur de nombre qui est maintenant égale à 11.5. La variable nombre étant supérieure à 10, le programme sort de la boucle.
+                    1. 11.5
+
+                        - On peut voir qu’après la 7e itération, le programme vérifie la valeur de nombre qui est maintenant égale à 11.5. La variable nombre étant supérieure à 10, le programme sort de la boucle.
 
         - ***Utilisation de la boucle do/while***  
 
@@ -1565,18 +1565,18 @@
 
             - Prenons l’exemple suivant :  
 
-            ```JS
-            let cv = 100;
-            while (cv > 100 && cv <= 110) {
-                console.log ("La voiture a " + cv + " cv");
-                cv ++
-            }
-            ```
-            - On peut voir dans ce script que la condition du while est que cv soit strictement supérieure à 100 et inférieure ou égale à 110. Concrètement, la boucle ne va jamais se lancer, car cv est égale à 100.  
+                ```JS
+                let cv = 100;
+                while (cv > 100 && cv <= 110) {
+                    console.log ("La voiture a " + cv + " cv");
+                    cv ++
+                }
+                ```
+                - On peut voir dans ce script que la condition du while est que cv soit strictement supérieure à 100 et inférieure ou égale à 110. Concrètement, la boucle ne va jamais se lancer, car cv est égale à 100.  
 
-            - Le programme vérifie l’expression cv > 100 && cv <= 110 et, étant donné qu’elle renvoie false, alors aucune itération de la boucle n’est opérée.  
-            
-            - Il nous faudrait donc un système qui lance une première itération de la boucle avant de contrôler l’expression conditionnelle. C’est ce que permet le do/while.  
+                - Le programme vérifie l’expression cv > 100 && cv <= 110 et, étant donné qu’elle renvoie false, alors aucune itération de la boucle n’est opérée.  
+                
+                - Il nous faudrait donc un système qui lance une première itération de la boucle avant de contrôler l’expression conditionnelle. C’est ce que permet le do/while.  
 
         - ***Do/while***  
 
@@ -1608,29 +1608,29 @@
             
             - Une boucle infinie a lieu quand l’expression de la condition d’un while ne cesse jamais de renvoyer true, c’est-à-dire qu’il n’y a aucune instruction qui va rendre cette condition fausse.  
 
-            ```JS
-            let a = 120;
-            while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
-                console.log(a);
-            }
-            ```
-            - Dans cet exemple, la condition du while spécifie que le type de la variable a doit être un nombre, et que a doit être comprise entre 100 (inclus) et 140 (inclus).  
-            
-            - Étant donné que la variable a est égale à 120, cette condition renvoie true. Toutefois, le problème est qu’aucune instruction ne vient dans le while changer la valeur de a.  
-            
-            - La condition sera alors toujours vérifiée (elle renverra toujours true), et la boucle ne s’arrêtera pas tant que le programme n’est pas stoppé. 
-            
-            - En revanche, si l’on ajoute une incrémentation de la variable dans la boucle, la boucle ne sera plus infinie et le code fonctionnera correctement.  
+                ```JS
+                let a = 120;
+                while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
+                    console.log(a);
+                }
+                ```
+                - Dans cet exemple, la condition du while spécifie que le type de la variable a doit être un nombre, et que a doit être comprise entre 100 (inclus) et 140 (inclus).  
+                
+                - Étant donné que la variable a est égale à 120, cette condition renvoie true. Toutefois, le problème est qu’aucune instruction ne vient dans le while changer la valeur de a.  
+                
+                - La condition sera alors toujours vérifiée (elle renverra toujours true), et la boucle ne s’arrêtera pas tant que le programme n’est pas stoppé. 
+                
+                - En revanche, si l’on ajoute une incrémentation de la variable dans la boucle, la boucle ne sera plus infinie et le code fonctionnera correctement.  
 
-                - Exemple :  
+                    - Exemple :  
 
-                    ```JS
-                    let a = 120;
-                    while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
-                        console.log(a);
-                        a ++;
-                    }
-                    ```
+                        ```JS
+                        let a = 120;
+                        while (typeof(a) == "number" && (a >= 100 && a <= 140)) {
+                            console.log(a);
+                            a ++;
+                        }
+                        ```
 
         - ***Utilisation de break et continue***  
 
@@ -1897,9 +1897,9 @@
         
         - Mais comment créer une fonction via une expression ? Voici un exemple tout simple :  
 
-        ```JS
-        let racine = function racineCarree (nombre) {return Math.sqrt(nombre);};
-        ```
+            ```JS
+            let racine = function racineCarree (nombre) {return Math.sqrt(nombre);};
+            ```
 
     - Nous pouvons voir que nous affectons à la variable racine l’expression de notre fonction racineCarree(). Cette fonction a simplement pour objectif de renvoyer la racine du nombre passé en paramètre, grâce au Math.sqrt(). Dans ce cas, nous créons la fonction grâce à une expression de fonction. Mais nous pouvons aussi grâce à ce système créer une fonction anonyme, c’est-à-dire une fonction qui n’a pas de nom :  
 
