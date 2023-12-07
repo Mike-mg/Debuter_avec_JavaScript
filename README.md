@@ -2639,3 +2639,334 @@
                 ```  
 
                 - Dans cet exemple, nous créons un tableau à deux dimensions. Les crochets imbriqués représentent des lignes. Nous avons dans cet exemple deux lignes et deux colonnes. Nous cherchons à accéder à l’index 1 de notre tableau, qui correspond à ["Renault", "Clio"]. Puis nous cherchons à récupérer l’index 0 de ["Renault", "Clio"], qui est donc la valeur « Renault ».
+
+##  
+## ***__Les objets JS__***  
+
+- ### ***Concept d’objet en POO***  
+    
+    - #### ***Concept d’objet en POO***  
+
+        - ***Propriété***  
+
+            - Un objet est une structure de données :  
+
+                - Une entité qui contient des propriétés de type valeur (de simples variables définies sur des valeurs)  
+                
+                - Des propriétés qu’on appelle méthodes (des variables définies sur des méthodes).  
+
+                    - Exemple :  
+
+                        ```JS
+                        monObj.nomPropriete = "valeur"
+                        ``` 
+                        - Dans cet exemple, ***nomPropriete*** est la clé de la propriété tandis que ***"valeur"*** est la valeur de la propriété.
+
+            - Les propriétés définies sur une valeur décrivent les caractéristiques de l'objet, tandis que les méthodes sont des fonctions associées à l'objet qui peuvent être appelées pour effectuer des actions ou des opérations sur l'objet ou pour renvoyer une valeur.  
+
+                - Si on résume, on a :  
+
+                    - Les « propriétés » qui sont définies sur une valeur.  
+
+                    - Les « méthodes » qui sont en fait des fonctions que l’on peut appeler via un objet. Ce sont des propriétés qui ne sont pas définies sur une simple valeur, mais sur une fonction.  
+
+                    - Exemple pour bien comprendre :  
+
+                        ```JS
+                        let telephone = {
+                        //propriétés définies sur une valeur primitive
+                        marque: "Apple", 
+                        ram: 4,
+                        stockage: 32,
+
+                        //propriétés définies sur une méthode
+                        activateModeAvion: function() {
+                        console.log("Mode avion activé");
+                        },
+                        
+                        desactivateModeAvion: function() {
+                        console.log("Mode avion désactivé");
+                        }}
+                        ```
+
+                    -  Il est aussi possible de définir des propriétés sur des objets. Par exemple, si dans cet exemple, on définit la propriété ram sur un objet Number :  
+
+                        - Exemple:  
+
+                            ```JS
+                            let telephone = {
+                            marque: "Apple", 
+                            ram: new Number(4), // ici, on définit la propriété ram sur un objet Number
+                            stockage: 32,
+
+                            activateModeAvion: function() {
+                            console.log("Mode avion activé");
+                            },
+                            
+                            desactivateModeAvion: function() {
+                            console.log("Mode avion désactivé");
+                            }}
+                            ```
+
+        - ***Type, constructeur et instance***  
+
+            - Chaque objet a un type. Un type définit la nature des valeurs possibles d’une donnée.  
+            
+            - Le type d’un objet définit les propriétés d’un objet, sa structure même.  
+            
+            - Pour créer un objet d’un certain type (Number, Array, ou autre) il nous faut appeler le constructeur de ce type. Les objets construits sont appelés « instances ».  
+
+            - Exemple :  
+
+                ```JS
+                let nombre = new Number(5216);
+                //Number = type
+                //nombre = instance de Number
+                //Number() = constructeur du type Number
+                ```
+                - Dans cet exemple, nous construisons un objet de type Number.
+
+        - ***Propriétés statiques et propriétés d’instance***  
+
+            - Nous pouvons classer l’ensemble des propriétés en deux catégories :  
+
+                - Les propriétés statiques, qui sont les mêmes pour toutes les instances d’un type.  
+
+                - Les propriétés d’instance, qui sont définies sur des valeurs spécifiques à chaque instance.  
+
+                - Exemple si on reprend notre nombre de type Number :  
+
+                    ```JS
+                    let nombre = new Number(5216);
+                    console.log(Number.MAX_VALUE) //propriété statique
+                    console.log(Number.isInteger(1)) //méthode statique
+                    console.log(nombre.valueOf()) //méthode d'instance
+                    ```
+
+                    - Les méthodes statiques s’appellent donc via le nom du type (dans cet exemple Number), tandis que les méthodes d’instance sont appelées via la référence de l’instance (dans cet exemple nombre).
+
+        - ***Introduction aux objets natifs***  
+
+            - À la différence des objets personnalisés, les objets natifs sont accessibles dans n’importe quel environnement JavaScript, sans même avoir le besoin d’installer une librairie. C’est le principe même d’un objet natif, il est natif au langage, et donc compris dans le « Core JavaScript », qui est la partie de JS définie par ECMAScript, qui contient donc tous les éléments natifs de JS.
+
+- ### ***Principaux objets natifs en JS***  
+
+    - #### ***Principaux objets natifs en JS***  
+
+        - ***L’objet Object***  
+
+            - Object est l’objet de base de tout objet en JavaScript. Quel que soit l’objet créé, qu’il soit natif ou défini par un développeur, il héritera directement ou indirectement des propriétés de base du type Object.  
+            
+            - Pour construire un objet de type Object, nous pouvons appeler simplement son constructeur.  
+
+            - Voici un exemple d’appel du constructeur Object. Pensons bien à utiliser le mot clé « new » afin de créer une instance d’Object :  
+
+                ```JS
+                let monObjet = new Object();
+                ```
+                
+                - Il est aussi possible de créer un objet sans appeler directement le constructeur Object() :
+
+                ```JS
+                let monObjet = {/*définition des propriétés*/} ;
+                ```
+
+                - Dans ce cas, nous utilisons la « syntaxe littérale pour initialiser les objets », et le constructeur Object() est appelé implicitement.  
+
+            - Quelques méthodes de Object :  
+
+                ```JS
+                //Nous créons un objet en enveloppant la valeur "undefined"
+                let monObjet = new Object();
+                //On crée 2 propriétés dans notre objet
+                monObjet = {
+                    nom:"mon objet",
+                    caracteristiques:"aucune"
+                };
+
+                //Quelques méthodes statiques
+                console.log(Object.keys(monObjet)); //renvoie les clés des propriétés définies
+                console.log(Object.values(monObjet)); //renvoie les valeurs des propriétés définies
+                console.log(Object.entries(monObjet)); //renvoie les paires clés/valeurs des propriétés définies
+                
+                //Quelques méthodes d'instance
+                console.log(monObjet.valueOf()); //renvoie la valeur primitive de l'objet, donc l'objet même
+                console.log(monObjet.toString()); //renvoie une chaîne représentant l'objet
+                console.log(monObjet.hasOwnProperty("nom")); //renvoie un booléen si l'objet a la propriété passée comme argument. Ne prend pas en compte les propriétés héritées "par défaut" du prototype Object.prototype
+                ```
+
+            - On peut noter que toutes les méthodes prédéfinies d’instance sont héritées de l’objet Object.prototype. C’est cet objet qui contient initialement toutes les méthodes dont vont hériter chaque instance de Object, comme toString(), ValueOf(), etc.  
+
+            - Object étant l’objet de base en JS, tous les autres types d’objets (Number, Array, etc.) vont hériter des propriétés et méthodes de Object. Nous pourrons donc utiliser ces méthodes avec les instances des autres types d’objets.  
+
+            - Quand nous parlons « d’héritage », cela veut simplement dire qu’un objet va recevoir des propriétés d’un autre objet. Dans ce cas, tous les objets JS vont recevoir (donc hériter) des propriétés d’Object.  
+
+        - ***L’objet Boolean***  
+
+            - Le type Boolean permet d’envelopper un booléen dans un objet. On parle de type « wrapper », c’est-à-dire qu’il permet d’envelopper une valeur primitive dans un objet, pour l’utiliser comme un objet.  
+
+            - Pour créer une instance de Boolean, nous pouvons appeler son constructeur :  
+
+                ```JS
+                let monObjet = new Boolean(true);
+                ```
+
+            - Exemple de quelques méthodes de Boolean
+
+                - Chaque instance de Boolean va hériter des méthodes de l’objet Boolean.prototype. Les méthodes de l’objet Boolean.prototype sont héritées de l’objet Object.prototype.  
+                
+                - Nous pouvons donc les appeler via des instances de Boolean. Mais nous pouvons aussi appeler les méthodes statiques de Object en passant comme argument des instances de Boolean, comme nous aurions d’ailleurs pu le faire pour l’objet Number.  
+
+                ```JS
+                //Nous créons un Boolean en enveloppant la valeur "true"
+                let monObjet = new Boolean(true);
+
+                //Quelques méthodes d'instance héritées de Boolean.prototype
+                console.log(monObjet.valueOf()); //renvoie la valeur enveloppée
+                console.log(monObjet.toString()); // renvoie une chaîne contenant la valeur enveloppée
+                
+                //Quelques méthodes statiques de Object :
+                //Ces méthodes renvoient un tableau vide car nous n'avons défini aucune propriété
+                console.log(Object.keys(monObjet)); //renvoie les clés des propriétés définies
+                console.log(Object.values(monObjet)); //renvoie les valeurs des propriétés définies
+                console.log(Object.entries(monObjet)); //renvoie les paires clé/valeur des propriétés définies
+                ```
+
+        - ***L’objet Number***  
+
+            - Number est un sous-type d’Object permettant de stocker une valeur primitive Number dans un objet, en l’enveloppant (c’est un type « wrapper »). Il permet de manipuler des nombres en passant par un objet. Number contient des propriétés statiques et d’instances très utiles pour manipuler les nombres.  
+
+            - Pour construire un Number, nous pouvons appeler son constructeur :  
+
+                ```JS
+                let monObjet = new Number(12467);
+                ```
+
+            - Exemple de quelques méthodes de Number :  
+
+                ```JS
+                //Nous créons un Number en enveloppant la valeur "12467"
+                let monObjet = new Number(12467.28);
+
+                //Quelques méthodes statiques
+                console.log(Number.isInteger(16)); //renvoie un booléen indiquant si le nombre est un entier
+                console.log(Number.isSafeInteger(121152172716642751675821627)); //renvoie un booléen indiquant si le nombre est un entier représentable de manière safe avec Number
+                console.log(Number.parseFloat("16278.12")); //convertit une chaîne en nombre à virgule flottante
+                
+                //Une méthode d'instance
+                console.log(monObjet.toFixed(1)); //renvoie une chaîne contenant la valeur du nombre arrondi avec un nombre de chiffres décimaux passés comme argument
+                ```
+
+                - Les méthodes d’instance sont héritées de l’objet Number.prototype par toutes les instances de Number.
+
+            - Nous pouvons utiliser les méthodes héritées de Object comme valueOf() ou toString() avec un objet Number :  
+
+                ```JS
+                let monObjet = new Number(12467.28);
+                console.log(monObjet.valueOf()); //renvoie la valeur primitive stockée dans l'objet
+                console.log(monObjet.toString()); //renvoie une chaîne contenant la valeur primitive stockée dans l'objet
+                ```
+        - ***L’objet String***  
+
+            - L'objet natif String est utilisé pour représenter et manipuler des chaînes de caractères.  
+            
+            - Il permet d’envelopper une valeur primitive de type String.  
+            
+            - Il faut voir les chaînes de caractères comme des ensemble de symboles ordonnés. Chaque lettre correspond à la valeur d’une propriété de l’objet.  
+
+            - Pour créer un objet String, nous pouvons appeler son constructeur, en passant comme argument la chaîne enveloppée :  
+
+                ```JS
+                let monObjet = new String("chaîne de caractères");
+                ```
+
+                - Nous pouvons constater que si on appelle la méthode Object.values(monObjet), un tableau contenant chaque caractère de notre chaîne est renvoyé.  
+                
+                - Si nous appelons Object.keys(monObjet), c’est un tableau contenant la clé de chaque propriété, chaque propriété étant un indice (0, 1, 2, etc.).  
+
+                    ```JS
+                    let monObjet = new String("chaîne de caractères"); 
+                    console.log(Object.keys(monObjet));
+                    console.log(Object.values(monObjet));
+                    ```
+
+                    - On comprend bien en ce sens qu’une chaîne de caractères est un ensemble de caractères ordonnés, qui constituent chacun une propriété.  
+
+            - Chaque instance de String hérite des méthodes de l’objet String.prototype.  
+
+                - Exemple de quelques méthodes de l’objet String :  
+
+                    ```JS
+                    monObjet = new String("chaîne de caractères");
+
+                    //Un exemple de méthode statique
+                    console.log(String.fromCharCode(67, 72, 65, 73, 78, 69)); //renvoie une chaîne composée des caractères unicode passés comme arguments, dans cet exemple : "CHAINE"
+                    
+                    //Quelques méthodes d'instance
+                    console.log(monObjet.charAt(4)); //renvoie le caractère de la chaîne stockée ayant l'index passé comme argument
+                    console.log(monObjet.slice(7, 9)); //renvoie une sous-chaîne de la chaîne d'origine, en utilisant l'index de début et de fin spécifiés
+                    ```
+
+        - ***L’objet Array***  
+
+            - L'objet Array permet de stocker et manipuler des collections d'éléments, qui peuvent être de n'importe quel type, y compris des chaînes de caractères, des nombres, des objets et même d'autres tableaux. Pour créer un objet Array, nous pouvons appeler son constructeur ou utiliser la syntaxe littérale de tableau.  
+
+            - Construire un Array :  
+
+                ```JS
+                let monObjet = new Array(); //appel du constructeur
+                let monObjet2 = []; //utilisation de la syntaxe de tableau
+                ```
+
+                - L’objet Array contient des méthodes statiques et d’instances spécifiques que vous connaissez déjà. Les méthodes d’instance sont héritées de l’objet Array.prototype.
+
+            - Exemple de quelques méthodes de Array :  
+
+                ```JS
+                let monObjet = new Array(1, 2); //appel du constructeur en créant un tableau avec deux éléments
+
+                //Une méthode statique
+                console.log(Array.from("test")); //renvoie un tableau à partir d'un objet itérable ou d'une chaîne de caractères
+                
+                //Quelques méthodes d'instance
+                console.log(monObjet.push(3)); //rajoute un (ou plusieurs) élément à la fin du tableau
+                console.log(monObjet.pop()); //supprime le dernier élément du tableau
+                console.log(monObjet.unshift(0)); //ajoute un (ou plusieurs) élément au début du tableau
+                console.log (monObjet);
+                ```
+
+
+        - ***L’objet Date***  
+
+            - L'objet natif Date en JavaScript est utilisé pour travailler avec des dates et des heures. Il permet de créer des instances de date, de manipuler des dates, de les afficher et de les convertir en différents formats.  
+
+            - Pour construire un objet Date, il nous faut appeler son constructeur. Si nous ne passons pas d’argument, l’objet Date stockera la date actuelle, sinon, il stockera la date passée :  
+
+                ```JS
+                let monObjet = new Date(); //date actuelle
+                let date = new Date('2000-12-18T03:24:00'); //date spécifiée
+                ```
+
+                - Bien évidemment, l’objet Date a des propriétés statiques et d’instance spécifiques, mais nous ne les aborderons pas dans ce cours, elles seront introduites en temps voulu. Cependant, Date étant aussi un objet, chaque instance de Date hérite des méthodes d’instance de l’objet Date.prototype. Quant à lui, Date.prototype hérite des méthodes de l’objet Object.prototype. On peut donc utiliser les méthodes valueOf() ou toString() par exemple, qui ont cependant un comportement plus spécifique.  
+
+            - Appel de méthodes héritées de Object.prototype :  
+
+                ```JS
+                monObjet = new Date('2000-12-18T03:24:00');
+                console.log(monObjet.valueOf());
+                console.log(monObjet.toString());
+                ```
+
+        - ***L’objet Math***  
+
+            - L'objet Math fournit des méthodes pour effectuer des opérations mathématiques. C’est un objet natif de JavaScript. À la différence de tous les objets dont nous avons parlé, l’objet Math est un objet statique, et donc ne peut pas être instancié. Nous pouvons cependant appeler ses méthodes statiques permettant de réaliser des calculs mathématiques.  
+
+            - Voici quelques exemples de méthodes de l’objet Math.
+
+                ```JS
+                console.log(Math.sqrt(9)) //renvoie la racine carrée du nombre.
+                console.log(Math.random()) //renvoie un nombre aléatoire entre 0 et 1
+                console.log(Math.max(1, 12, 13, 52)) //renvoie le nombre max dans un ensemble de nombres
+                console.log(Math.min(1, 12, 13, 52)) //renvoie le nombre min dans un ensemble de nombres
+                console.log(Math.round(26178.516)) //renvoie le nombre arrondi à l'entier le plus proche
+                ```
